@@ -1,0 +1,125 @@
+header {
+    position: fixed;
+    width: 100%;
+    padding: 30px 0;
+    font-size: 25px;    
+    z-index: 10;
+    user-select: none;
+
+    /* background: linear-gradient(#f7f8fa, transparent); */
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    z-index: 2;
+    font-weight: bold;
+    font-size: 28px;
+    margin: 0 100px;
+    margin: 0 5vw;
+    text-align: center;
+    cursor: pointer;
+    white-space: pre;
+    perspective: 10px;
+
+    user-select: none;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.magnet-links {
+    margin: 0 3vw;
+    padding: 0;
+    display: flex;
+}
+
+.magnet-links button {
+    width: 120px;
+    height: fit-content;
+
+    height: 65px;
+    line-height: 56px;
+    
+    margin: 10px 20px;
+    border: none;
+    background: none;
+    
+    font-family: 'AvertaPE';
+    font-size: 25px;
+    text-align: center;
+    color: #17181a;
+    text-transform: lowercase;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.magnet-links button:active {
+    color: #17181a;
+    border: none;
+    outline: none;
+}
+
+.magnet-links button:focus {
+    color: #17181a;
+    border: none;
+    outline: none;
+}
+
+
+.line {
+    border-bottom: 2px solid #17181a;
+    margin-top: 4px;
+    width: 30px;
+    border-radius: 8px;
+    will-change: transform;
+}
+
+.hamburger {
+    z-index: 2;
+    padding: 0 5vw;
+    height: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #17181a88;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.menu-inner {
+    position: absolute;
+    top: -60vh;
+    left: 0;
+    height: 60vh;
+    width: 100%;
+    background-color: #f7f8fa;
+    box-shadow: 0 10px 50px #17181a88;
+    pointer-events: all;
+}
+
+.menu .magnet-links {
+    height: 100%;
+    width: 100%;
+    padding-top: 40px;
+    margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

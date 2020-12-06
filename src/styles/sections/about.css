@@ -1,0 +1,123 @@
+/* ABOUT */
+
+.about {
+    height: 100vh;
+    align-items: center;
+    position: relative;
+}
+
+.about .skills {
+    padding-right: 7vw;
+
+    /* transform-style: preserve-3d; */
+    /* transform: perspective(200px) rotateY(10deg); */
+
+    /* position: absolute;
+    left: 0;
+    padding-left: 11vw; */
+
+
+}
+
+.about .skills .fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #f7f8fa00, #f7f8fa);
+}
+
+.about .skills h4 {
+    width: 100px; 
+    display: flex;
+    align-self: center;
+    cursor: pointer;    
+
+    /* margin: 30px;
+    font-size: 5em;
+    -webkit-text-stroke: 1px black;
+    color: #f7f8fa; */
+}
+
+.about .skills h4:focus {
+    border: none;
+}
+
+.about .skills h4::before {
+    align-self: center;
+    padding-top: 2px;
+    margin-right: 10px;
+    content: url(../../assets/img/add.svg);
+    transform: rotateZ( var(--angle));
+}
+
+.about hr {
+    transform: translateZ(1px) rotate(0.01deg);
+    margin-left: -10px;
+    width: 110%;
+}
+
+.about .bio {
+    padding-left: 15vw;
+}
+
+.about .bio p {
+    max-width: 45vw;
+}
+
+.about .bio p:nth-child(3) {
+    font-size: clamp(20px, 1.3vw, 2em);
+}
+
+.about .bio p:nth-child(4) {
+    font-size: clamp(20px, 1.2vw, 2em);
+    opacity: .7;
+}
+
+.about .skills ul{
+    list-style: none;
+}
+
+.about .skills ul > li {
+    font-size: clamp(20px, 1vw, 30px);
+    padding: 4px;
+    width: max-content;
+}
+
+@media screen and (max-width: 850px){
+    .about {
+        flex-wrap: wrap-reverse;
+        height: fit-content !important;
+    }
+
+    .about .skills {
+        padding-right: 0;
+        margin-left: 10%;
+        margin-top: 10%;
+        width: 100%;
+    }
+    
+    .about .skills h4 {
+        font-size: 25px;
+    }
+
+    .about .skills h4::before {
+        padding-top: 0;
+    }
+
+    .about .bio {
+        padding-left: 0;
+        width: 80%;
+    }
+
+    .about .bio p {
+        max-width: 100%;
+    }
+
+    .about hr {
+        transform: translateZ(1px) rotate(0.01deg);
+        margin-left: -10px;
+        width: 100%;
+    }
+}

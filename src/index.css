@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'AvertaPE';
+  src: url('./assets/fonts/AvertaDemoPE-Regular.otf');
+  font-weight: normal;
+  font-display: fallback;
+}
+
+html, body, #root {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'AvertaPE', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: #f7f8fa;
+  user-select: none;
+
+  --angle: 0deg;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
