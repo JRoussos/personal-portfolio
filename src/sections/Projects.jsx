@@ -37,6 +37,18 @@ const Projects = () => {
         currentScrollPosition = clamp(currentScrollPosition, 0, boundMax) // prevent dragging out of bound
     }
 
+    const handleMouseLeave = () => {
+        gsap.timeline()
+            .to('.cursor', {duration: .1, scale: 0})
+            .to('.cursor', {duration: .1, scale: 1, content: "var(--dot)"})
+    }
+
+    const handleMouseEnter = () => {
+        gsap.timeline()
+            .to('.cursor', {duration: .1, scale: 0})
+            .to('.cursor', {duration: .1, scale: 1, content: "var(--drag)"})
+    }
+
     const handleMouseDown = e => {
         e.target.setPointerCapture(e.pointerId)
         document.querySelector('.projects').style.cursor = "grabbing"        
@@ -101,7 +113,12 @@ const Projects = () => {
 
     return(
         <section id="projects" className="section projects">
-            <div className="scroller" onMouseMove={e => handleMouseMove(e)} onPointerDown={e => handleMouseDown(e)} onPointerUp={e => handleMouseUp(e)}> {/* the scroll container */}
+            <div className="scroller" 
+                onMouseMove={e => handleMouseMove(e)} 
+                onPointerDown={e => handleMouseDown(e)} 
+                onPointerUp={e => handleMouseUp(e)} 
+                onMouseLeave={() => handleMouseLeave()}
+                onMouseEnter={() => handleMouseEnter()}> {/* the scroll container */}
                 <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                     
                     <div className="bound">

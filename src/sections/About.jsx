@@ -5,7 +5,7 @@ import store from '../assets/utils/store';
 import '../styles/sections/about.css';
 
 const Skills = () => {
-    const [ collapse, setCollapse ] = useState([ true, false, false ])
+    const [ collapse, setCollapse ] = useState([ false, true, true ])
     const [ heights, setHeights ] = useState([])
 
     const skillsPanel = useRef()

@@ -11,12 +11,15 @@
     /* border-radius: 50%; */
 
     mix-blend-mode: difference;
-    /* background-color: white; */
 
     pointer-events: none;
     will-change: transform;
-
+    
     z-index: 100;
+    
+    content: var(--dot);
+    --dot: url(../assets/img/dot.svg);
+    --drag: url(../assets/img/drag.svg);
 }
 
 .cursor-inner {

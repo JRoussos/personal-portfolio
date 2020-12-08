@@ -38,6 +38,9 @@
     font-size: 5em;
     -webkit-text-stroke: 1px black;
     color: #f7f8fa; */
+
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .about .skills h4:focus {

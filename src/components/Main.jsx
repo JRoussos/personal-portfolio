@@ -22,7 +22,7 @@ const Main = () => {
     const scrollVel = 0.065
 
     useEffect(() => {
-        // setBounds()
+        setBounds()
         gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
     }, [])
 
@@ -50,7 +50,7 @@ const Main = () => {
         setScrollY(-scrollRounded)
 
         const setParallaxY = gsap.quickSetter('.parallax', 'y', 'px')
-        setParallaxY(scrollRounded * 0.08)
+        setParallaxY(scrollRounded * 0.2)
 
         gsap.utils.toArray('.paragraph').forEach((element, i) => {
             const setParagraph = gsap.quickSetter(element, 'y', 'px')
