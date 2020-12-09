@@ -35,11 +35,11 @@ const Hero = () => {
         <section className="section landing">
             <div ref={refItem} className="text">
                 <div className="parallax">
-                    <p className="welcome">Hey, I'm John, a front-end developer <br/> and softwate engineer.
+                    <h1 className="welcome">Hey, I'm John, a front-end developer <br/> and softwate engineer.
                         <span className="wave_wrapper">
                             <img id="wave" src={wave} alt="waving hand"/>
                         </span>
-                    </p>
+                    </h1>
                 </div>
             </div>
             <img className="profile" src={image} alt="profile"/>

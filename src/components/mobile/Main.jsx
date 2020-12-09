@@ -35,6 +35,7 @@ const Main = () => {
 
     window.addEventListener('scroll', handleOnScroll, { passive: true })
     window.addEventListener('resize', setBounds, {passive: true})
+    // window.addEventListener('load', setBounds, {passive: true})
 
     gsap.ticker.add(() => {
         const setScrollY = gsap.quickSetter(scrollable.current, 'y', 'px')
@@ -54,7 +55,7 @@ const Main = () => {
         <article ref={scroller} className="scroller"> {/* the scroll container */}
             <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                 <Hero/>
-                <About/>
+                <About mainBounds={setBounds}/>
                 <Projects/>
                 <Contact/>
             </div>

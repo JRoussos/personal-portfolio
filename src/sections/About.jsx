@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import store from '../assets/utils/store';
 import '../styles/sections/about.css';
 
-const Skills = () => {
+const Skills = ({mainBounds}) => {
     const [ collapse, setCollapse ] = useState([ false, true, true ])
     const [ heights, setHeights ] = useState([])
 
@@ -45,11 +45,11 @@ const Skills = () => {
         
         if(collapse[index]){
             gsap.to(e.target, {duration: .3, "--angle": "0deg", ease: "sine.inOut"})
-            gsap.to(e.target.nextSibling, {duration: .4, height: 0, ease: "sine.inOut"})
+            gsap.to(e.target.nextSibling, {duration: .5, height: 0, ease: "sine.inOut", onComplete: () => mainBounds() })
             gsap.to(`#skill_wrapper_${index} li`, {duration: .25, opacity: 0, ease: "sine.inOut", stagger: { amount: 0.2, from: "end"}})
         }else{
             gsap.to(e.target, {duration: .3, "--angle": "45deg", ease: "sine.inOut"})
-            gsap.to(e.target.nextSibling, {duration: .4, height: heights[index], ease: "sine.inOut"})
+            gsap.to(e.target.nextSibling, {duration: .5, height: heights[index], ease: "sine.inOut", onComplete: () => mainBounds() })
             gsap.to(`#skill_wrapper_${index} li`, {duration: .25, opacity: 1, ease: "sine.inOut", stagger: { amount: 0.2, from: "start"}})
         }
     }
@@ -81,14 +81,14 @@ const Bio = () => {
 }
 
 
-const About = () => {
+const About = ({mainBounds}) => {
     useEffect(() => {
         gsap.set(".paragraph", {force3D: true, rotation: 0.01})
     }, [])
 
     return(
         <section className="section about">
-            <Skills/>
+            <Skills mainBounds={mainBounds}/>
             <Bio/>
         </section>
     )

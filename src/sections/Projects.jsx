@@ -39,14 +39,14 @@ const Projects = () => {
 
     const handleMouseLeave = () => {
         gsap.timeline()
-            .to('.cursor', {duration: .1, scale: 0})
-            .to('.cursor', {duration: .1, scale: 1, content: "var(--dot)"})
+            .to('.cursor', {duration: .2, scale: 0})
+            .to('.cursor', {duration: .2, scale: 1, content: "var(--dot)"})
     }
 
     const handleMouseEnter = () => {
         gsap.timeline()
-            .to('.cursor', {duration: .1, scale: 0})
-            .to('.cursor', {duration: .1, scale: 1, content: "var(--drag)"})
+            .to('.cursor', {duration: .2, scale: 0})
+            .to('.cursor', {duration: .2, scale: 1, content: "var(--drag)"})
     }
 
     const handleMouseDown = e => {

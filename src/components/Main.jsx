@@ -22,7 +22,7 @@ const Main = () => {
     const scrollVel = 0.065
 
     useEffect(() => {
-        setBounds()
+        // setBounds()
         gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
     }, [])
 
@@ -69,7 +69,7 @@ const Main = () => {
         <article ref={scroller} className="scroller"> {/* the scroll container */}
             <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                 <Hero/>
-                <About/>
+                <About mainBounds={setBounds}/>
                 <Projects/>
                 <Contact/>
             </div>

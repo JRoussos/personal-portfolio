@@ -1,10 +1,11 @@
 /* LANDING */
 
-/* .landing {
-    // border: 1px solid steelblue;
-    // flex-wrap: wrap-reverse;
-    // justify-content: space-evenly !important;
-} */
+.landing {
+    /* border: 1px solid steelblue; */
+    /* flex-wrap: wrap-reverse; */
+    /* justify-content: space-evenly !important; */
+    position: relative;
+}
 
 .landing .text {
     position: absolute;
@@ -12,9 +13,10 @@
     left: 15vw;
 }
 
-.landing p{
+.landing h1{
     /* font-size: 2.3vw; */
-    font-size: clamp(30px, 2.4vw, 4.8rem);
+    font-size: clamp(30px, 2.4vw, 4.5rem);
+    font-weight: normal;
     margin: 0;
     line-height: 1.5em;
 }
@@ -38,6 +40,14 @@
     padding: 0;
     width: 2.7vw;
     min-width: 30px;
+}
+
+.scroll_trigger {
+    height: 10vh;
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
 }
 
 @media screen and (max-width: 800px){
