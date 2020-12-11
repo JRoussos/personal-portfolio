@@ -2,10 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { invlerp, clamp } from '../assets/utils/utils';
 
-import one from '../assets/img/projects/one.jpg';
-import two from '../assets/img/projects/two.jpg';
-import three from '../assets/img/projects/three.jpg';
-
+import store from '../assets/utils/store';
 import '../styles/sections/projects.css';
 
 const Projects = () => {
@@ -24,8 +21,6 @@ const Projects = () => {
     const scrollVel = 0.065
     const scaleVel = 0.1
 
-    const images = [one, two, three]
-
     useEffect(() => {
         gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
     }, [])
@@ -37,16 +32,16 @@ const Projects = () => {
         currentScrollPosition = clamp(currentScrollPosition, 0, boundMax) // prevent dragging out of bound
     }
 
-    const handleMouseLeave = () => {
+    const handleMouseLeave = (pointer) => {
         gsap.timeline()
             .to('.cursor', {duration: .2, scale: 0})
-            .to('.cursor', {duration: .2, scale: 1, content: "var(--dot)"})
+            .to('.cursor', {duration: .2, scale: 1, content: `var(--${pointer})`}) //dot
     }
 
-    const handleMouseEnter = () => {
+    const handleMouseEnter = (pointer) => {
         gsap.timeline()
             .to('.cursor', {duration: .2, scale: 0})
-            .to('.cursor', {duration: .2, scale: 1, content: "var(--drag)"})
+            .to('.cursor', {duration: .2, scale: 1, content: `var(--${pointer})`}) //drag
     }
 
     const handleMouseDown = e => {
@@ -99,7 +94,8 @@ const Projects = () => {
         
         gsap.utils.toArray('.text').forEach(element => {
             const setParagraph = gsap.quickSetter(element, 'x', 'px')
-            setParagraph(step.toFixed(2) * 0.5)
+            // setParagraph(step.toFixed(2) * 0.5)
+            setParagraph((Math.round( step * 100 ) / 100) * 0.5)
         })
 
         const setSkewY = gsap.quickSetter(scrollable.current, 'skewX', 'deg')
@@ -117,21 +113,23 @@ const Projects = () => {
                 onMouseMove={e => handleMouseMove(e)} 
                 onPointerDown={e => handleMouseDown(e)} 
                 onPointerUp={e => handleMouseUp(e)} 
-                onMouseLeave={() => handleMouseLeave()}
-                onMouseEnter={() => handleMouseEnter()}> {/* the scroll container */}
+                onMouseLeave={() => handleMouseLeave("dot")}
+                onMouseEnter={() => handleMouseEnter("drag")}> {/* the scroll container */}
                 <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                     
                     <div className="bound">
                         <h4 className="head">PROJECTS</h4>
                     </div>
 
-                    {images.map( (image, index) => (
+                    {store.contents.projects.map( (project, index) => (
                         <div key={index} className="bound">
                             <div className="slide">
-                                <div className="slide-inner">
-                                    <img className="slide-image" src={image} draggable="false" alt="project"/>
+                                <div className="slide-inner" title={project.title}>
+                                    <img className="slide-image" src={project.img} draggable="false" alt={project.title}/>
                                     <div>
-                                        <h6 className="checkIt text">check it on github</h6>
+                                        <a target="_blank" rel="noopener noreferrer" href={project.link}>
+                                            <h6 className="checkIt text">check it on github</h6>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

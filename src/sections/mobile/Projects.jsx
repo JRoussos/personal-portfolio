@@ -2,10 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { invlerp } from '../../assets/utils/utils';
 
-import one from '../../assets/img/projects/one.jpg';
-import two from '../../assets/img/projects/two.jpg';
-import three from '../../assets/img/projects/three.jpg';
-
+import store from '../../assets/utils/store';
 import '../../styles/sections/projects.css';
 
 const Projects = () => {
@@ -18,9 +15,7 @@ const Projects = () => {
     let boundWidth = 0
 
     const scrollVel = 0.065
-    const scaleVel = 0.1
-
-    const images = [one, two, three]
+    // const scaleVel = 0.1
 
     useEffect(() => {
         gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
@@ -37,31 +32,29 @@ const Projects = () => {
         
         gsap.utils.toArray('.bound').forEach(slide => {
             const slideWidth = slide.getBoundingClientRect().width
-
-            // console.log("slideWidth: ", slideWidth);
             
             generalWidth += slideWidth
             boundWidth = generalWidth
             boundMax = boundWidth - window.innerWidth
         })
 
-        // console.log("boundMax:", boundMax, "boundWidth/general:", boundWidth, "windowInner:", window.innerWidth);
         document.querySelector('.projects .scrollable').style.width = `${boundMax}px`        
     }
 
     window.addEventListener('resize', setBounds, {passive: true})
 
     gsap.ticker.add(() => {
-        const setScaleY = gsap.quickSetter('.slide-image', 'scaleY')
+        // const setScaleY = gsap.quickSetter(scrollable.current, 'scaleY')
 
         const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
         const step = ( currentScrollPosition - lastScrollPosition ) * delta
         
         lastScrollPosition += step
-        const scrollRounded = lastScrollPosition.toFixed(2)
+        const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
+        // const scrollRounded = lastScrollPosition.toFixed(2)
 
-        const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
-        setScaleY(scaleY)
+        // const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
+        // setScaleY(scaleY)
         
         const scale = (invlerp(0, boundMax.toFixed(2), scrollRounded))
         document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scale})`
@@ -76,13 +69,15 @@ const Projects = () => {
                         <h4 className="head">PROJECTS</h4>
                     </div>
 
-                    {images.map( (image, index) => (
+                    {store.contents.projects.map( (project, index) => (
                         <div key={index} className="bound">
                             <div className="slide">
                                 <div className="slide-inner">
-                                    <img className="slide-image" src={image} draggable="false" alt="project"/>
+                                    <img className="slide-image" src={project.img} draggable="false" alt={project.title}/>
                                     <div>
-                                        <h6 className="checkIt text">check it on github</h6>
+                                        <a target="_blank" rel="noopener noreferrer" href={project.link}>
+                                            <h6 className="checkIt text">check it on github</h6>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

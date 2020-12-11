@@ -46,6 +46,7 @@
 .projects .slide {
     display: flex;
     padding: 20vh 15vh 20vh 0;
+    /* padding: 10vh 15vh 10vh 0; */
 }
 
 .projects .slide-inner {
@@ -56,15 +57,18 @@
 }
 
 .projects .slide-image {
-    object-fit: cover;
     width: 45vw;
     height: 25vw;
     max-width: 850px;
     max-height: 450px;
     min-width: 650px;
     min-height: 350px;
+    
+    object-fit: cover;
+    object-position: left;
+    
     pointer-events: none;
-    /* box-shadow: 0 2px 6px -2px #111111; */
+    box-shadow: 0 2px 6px -2px #111111;
 }
 
 .projects .title {
@@ -90,6 +94,8 @@
     width: fit-content;
     height: 30px;
     line-height: 30px;
+
+    color: #000;
 }
 
 .projects .scrollbar {

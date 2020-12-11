@@ -66,14 +66,14 @@ const Main = () => {
     })
 
     return(
-        <article ref={scroller} className="scroller"> {/* the scroll container */}
+        <main ref={scroller} className="scroller"> {/* the scroll container */}
             <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                 <Hero/>
                 <About mainBounds={setBounds}/>
                 <Projects/>
                 <Contact/>
             </div>
-        </article>
+        </main>
     )
 }
 

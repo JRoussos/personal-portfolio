@@ -15,8 +15,7 @@ let mouse = {
 let velocity = 0.1
 
 const Cursor = () => {
-    const tl = useRef(gsap.timeline({paused: true}))
-    // const drag = useRef(gsap.timeline({paused: true}))    
+    const tl = useRef(gsap.timeline({paused: true})) 
 
     const mousePos = e => {
         mouse.x = e.clientX
@@ -31,32 +30,6 @@ const Cursor = () => {
 
         document.getElementById('root').addEventListener("mouseleave", () => { tl.current.reverse() })
         document.getElementById('root').addEventListener("mouseover", () => { tl.current.play() })
-
-        // document.querySelector('.projects').addEventListener("mouseleave", () => {
-        //     // drag.current.reverse()
-        //     setDragging(false)
-        // })
-        
-        // document.querySelector('.projects').addEventListener("mouseover", () => {
-        //     // drag.current.play()
-        //     setDragging(true)
-        // })
-
-        // document.querySelectorAll('.magnet').forEach(link => {
-        //     link.addEventListener("mousemove", e => {
-        //         const distance = calculateDistance(e.target, e.clientX, e.clientY)
-        //         const scale = 1 - (distance / 100)
-                
-        //         gsap.to('.cursor', {duration: .2, width: 40, height: 40, scale: scale, top: "-20px", left: "-20px", ease: 'sine.out'})
-        //     })
-    
-        //     link.addEventListener("mouseleave", () => {
-        //         gsap.to('.cursor', {duration: .2, width: 10, height: 10, scale: 1, top: "-5px", left: "-5px", ease: 'sine.out'})
-        //     })
-        // })
-
-        // document.querySelector('.projects').addEventListener("mouseleave", () => { setDragging(false)} )
-        // document.querySelector('.projects').addEventListener("mouseover", () => { setDragging(true)} )
 
         return () => { window.removeEventListener("mousemove", e => mousePos(e)) }
 

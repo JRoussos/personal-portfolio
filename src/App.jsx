@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import './styles/home.css'
 
@@ -32,6 +32,6 @@ const Mobile = () => (
   </div>
 )
 
-const Home = () => isMobile ? <Mobile/> : <Web/>
+const App = () => isMobile ? <Mobile/> : <Web/>
 
-export default Home
+export default App

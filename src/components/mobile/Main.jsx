@@ -43,7 +43,8 @@ const Main = () => {
         const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
 
         lastScrollPosition += ( currentScrollPosition - lastScrollPosition ) * delta
-        const scrollRounded = lastScrollPosition.toFixed(2)
+        const scrollRounded = Math.round(lastScrollPosition * 100) / 100
+        // const scrollRounded = lastScrollPosition.toFixed(2)
 
         setScrollY(-scrollRounded)
 
@@ -52,14 +53,14 @@ const Main = () => {
     })
 
     return(
-        <article ref={scroller} className="scroller"> {/* the scroll container */}
+        <main ref={scroller} className="scroller"> {/* the scroll container */}
             <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                 <Hero/>
                 <About mainBounds={setBounds}/>
                 <Projects/>
                 <Contact/>
             </div>
-        </article>
+        </main>
     )
 }
 

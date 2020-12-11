@@ -1,31 +1,8 @@
 import React from 'react';
 import { gsap } from 'gsap';
 
+import store from '../assets/utils/store';
 import '../styles/sections/contact.css';
-
-import git from '../assets/icons/github.png';
-import fb from '../assets/icons/facebook.png';
-import ins from '../assets/icons/instagram.png';
-import tw from '../assets/icons/twitter.png';
-
-const socials = [
-    {
-        icon: git,
-        link: "https://github.com/JRoussos"
-    },
-    {
-        icon: fb,
-        link: "https://facebook.com/giannhs.roussos.s/"
-    },
-    {
-        icon: ins,
-        link: "https://www.instagram.com/giannhs_r/"
-    },
-    {
-        icon: tw,
-        link: "https://twitter.com/giannhs41"
-    }
-]
 
 const About = () => {
 
@@ -68,7 +45,7 @@ const About = () => {
                 <div className="icon_container">
                     <p>follow me on</p>
                     <div style={{display: "flex"}}>
-                        {socials.map((social, index) => (
+                        {store.contents.contact.map((social, index) => (
                             <div className="socials" key={index}>
                                 <a target="_blank" rel="noopener noreferrer" href={social.link}>
                                     <img onMouseEnter={() => handleMouseEnterSocial(index)} onMouseLeave={() => handleMouseLeaveSocial(index)} src={social.icon} alt={social.link}/>

@@ -18,8 +18,10 @@
     z-index: 100;
     
     content: var(--dot);
+    
     --dot: url(../assets/img/dot.svg);
     --drag: url(../assets/img/drag.svg);
+    --circle: url(../assets/img/circle.svg);
 }
 
 .cursor-inner {
