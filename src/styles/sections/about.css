@@ -1,22 +1,13 @@
 /* ABOUT */
 
 .about {
-    height: 100vh;
     align-items: center;
     position: relative;
+    padding: 10% 0;
 }
 
 .about .skills {
     padding-right: 7vw;
-
-    /* transform-style: preserve-3d; */
-    /* transform: perspective(200px) rotateY(10deg); */
-
-    /* position: absolute;
-    left: 0;
-    padding-left: 11vw; */
-
-
 }
 
 .about .skills .fade {

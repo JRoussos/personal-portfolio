@@ -28,14 +28,6 @@ const Skills = ({mainBounds}) => {
     }
 
     const toggleCollapse = (index, e) => {
-        // const array = [ 0, 0, 0 ]
-        // const array = collapse
-        // array[index] = !collapse[index]
-
-        // setCollapse( () => array ) )
-
-        console.log(collapse[1]);
-
         const array = collapse
         array[index] = !collapse[index]
         setCollapse(array)

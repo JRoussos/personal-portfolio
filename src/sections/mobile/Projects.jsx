@@ -25,6 +25,7 @@ const Projects = () => {
 
     const handleScroll = e => {
         currentScrollPosition = e.target.scrollLeft
+        e.target.removeEventListener('scroll', handleScroll)
     }
     
     const setBounds = () => {
@@ -51,7 +52,6 @@ const Projects = () => {
         
         lastScrollPosition += step
         const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
-        // const scrollRounded = lastScrollPosition.toFixed(2)
 
         // const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
         // setScaleY(scaleY)

@@ -1,13 +1,12 @@
 /* CONTACT */
 
 .contact {
-    background-color: #000;
+    background-color: #000 !important;
     color: #fff;
     display: flex;
-    height: 75vh !important;
+    height: 75vh;
 
     position: relative;
-    /* z-index: -1; */
 }
 
 .contact .mail_wrapper {
@@ -58,7 +57,7 @@
 }
 
 .contact .icon_container p {
-    font-size: clamp(15px, 1.3vw, 20px);
+    font-size: clamp(17px, 1.3vw, 20px);
     padding-bottom: 2%;
 }
 
@@ -68,7 +67,7 @@
 
 .contact .icon_container img {
     width: 1.75vw;
-    min-width: 20px;
+    min-width: 25px;
     max-width: 30px;
     cursor: pointer;
 }
@@ -93,9 +92,9 @@
 }
 
 @media screen and (max-width: 850px){
-    .contact {
+    /* .contact {
         width: 101% !important;
-    }
+    } */
     
     .contact .mail_wrapper hr {
         width: 100%;
@@ -106,7 +105,7 @@
     }
 
     .contact .icon_container p {
-        font-size: clamp(15px, 1.3vw, 20px);
+        font-size: clamp(17px, 1.3vw, 20px);
         padding-bottom: 2%;
     }
  

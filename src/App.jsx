@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { isMobile } from 'react-device-detect';
 import './styles/home.css'
 

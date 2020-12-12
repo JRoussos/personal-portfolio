@@ -2,7 +2,7 @@
   font-family: 'AvertaPE';
   src: url('./assets/fonts/AvertaDemoPE-Regular.otf');
   font-weight: normal;
-  font-display: fallback;
+  font-display: unset;
 }
 
 html, body, #root {
@@ -14,6 +14,7 @@ html, body, #root {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: #f7f8fa;
+  background-color: #000;
   user-select: none;
   scrollbar-width: none;
 

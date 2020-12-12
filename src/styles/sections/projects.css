@@ -1,12 +1,12 @@
-/* PROJECTS */
-
 .projects {
     display: flex;
     justify-content: flex-start;
     cursor: grab;
     position: relative;
-    margin-bottom: 10%;
+    margin: -1px 0;
+    /* margin-bottom: 10%; */
 
+    height: fit-content;
     will-change: transform;
 }
 
@@ -16,7 +16,7 @@
 
 .projects .scroller {
     scrollbar-width: none;
-    position: absolute;
+    position: relative;
     overflow: hidden;
     /* top: 0;
     left: 0;
@@ -122,10 +122,6 @@
 
 @media screen and (max-width: 850px){
 
-    .projects {
-        height: 500px !important;
-    }
-
     .projects .scroller {
         height: fit-content;
     }
@@ -140,7 +136,7 @@
     }
     
     .projects .slide-image {
-        min-width: 90vw;
-        min-height: 300px;
+        min-width: 95vw;
+        /* min-height: 300px; */
     }
 }

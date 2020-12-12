@@ -94,7 +94,6 @@ const Projects = () => {
         
         gsap.utils.toArray('.text').forEach(element => {
             const setParagraph = gsap.quickSetter(element, 'x', 'px')
-            // setParagraph(step.toFixed(2) * 0.5)
             setParagraph((Math.round( step * 100 ) / 100) * 0.5)
         })
 
