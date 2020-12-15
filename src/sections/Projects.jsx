@@ -123,10 +123,10 @@ const Projects = () => {
                     {store.contents.projects.map( (project, index) => (
                         <div key={index} className="bound">
                             <div className="slide">
-                                <div className="slide-inner" title={project.title}>
+                                <div className="slide-inner">
                                     <img className="slide-image" src={project.img} draggable="false" alt={project.title}/>
                                     <div>
-                                        <a target="_blank" rel="noopener noreferrer" href={project.link}>
+                                        <a target="_blank" tabIndex="-1" rel="noopener noreferrer" href={project.link}>
                                             <h6 className="checkIt text">check it on github</h6>
                                         </a>
                                     </div>

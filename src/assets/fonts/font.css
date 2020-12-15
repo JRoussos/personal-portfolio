@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'AvertaPE';
+  src: url('./AvertaDemoPE-Regular.otf');
+  font-weight: normal;
+  font-display: fallback;
+}

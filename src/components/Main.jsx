@@ -36,7 +36,7 @@ const Main = () => {
 
     window.addEventListener('scroll', handleOnScroll, { passive: true })
     window.addEventListener('resize', setBounds, {passive: true})
-    window.addEventListener('load', setBounds, {passive: true})
+    window.addEventListener('load', setBounds)
 
     gsap.ticker.add(() => {
         const setScrollY = gsap.quickSetter(scrollable.current, 'y', 'px')

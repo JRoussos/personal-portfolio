@@ -23,19 +23,19 @@ const Hero = () => {
     }, [])
 
     useEffect(() => {
-        inView && wavingHand(1.5)
+        inView && waveHello(1.5)
     }, [inView])
 
-    const wavingHand = delay => {
-        gsap.timeline({repeat: 3, yoyo: true, delay})
+    const waveHello = delay => {
+        gsap.timeline({repeat: 3, yoyo: true, delay, onComplete: () => {gsap.set('.wave_wrapper', {rotateZ: 0}) } })
             .to('.wave_wrapper', {duration: .4, rotateZ: 30, ease: "sine.inOut"})
     }
 
     return(
-        <section className="section landing">
+        <section className="section hero">
             <div ref={refItem} className="text">
                 <div className="parallax">
-                    <h1 className="welcome">Hey, I'm John, a front-end developer <br/> and softwate engineer.
+                    <h1 className="welcome">Hey, I'm John, a front-end developer <br/> and software engineer.
                         <span className="wave_wrapper">
                             <img id="wave" src={wave} alt="waving hand"/>
                         </span>

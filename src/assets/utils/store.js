@@ -5,30 +5,30 @@ import ins from '../icons/instagram.png';
 import tw from '../icons/twitter.png';
 
 // Projects
-import one from '../img/projects/chat1.png';
-import two from '../img/projects/two.jpg';
-import three from '../img/projects/three.jpg';
+import chat from '../img/projects/chat.jpg';
+import bus from '../img/projects/bus.jpg';
+import film from '../img/projects/film.jpg';
 
 
 const store = {
     contents: {
         about: {
             skills: [
+                {title: "DESIGN", content: ["Prototyping", "Sketches", "Animations"]},
                 {title: "WEB", content: ["React", "Node.js", "SCSS", "Firebase", "HTML/CSS/JS"]},
                 {title: "SOFTWARE", content: ["Python", "C/C++", "Java"]},
                 {title: "TOOLS", content: ["VS Code", "Figma", "Photoshop"]}
             ],
             bio: [
-                // " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla cursus luctus enim id rutrum. Nullam pulvinar sed lorem nec tincidunt. ",
-                // " Nam eleifend orci urna, non tincidunt dui aliquam vitae. Praesent feugiat lobortis mi a venenatis. Donec auctor mi lacus, sit amet varius metus ultricies a. Proin a leo quis nibh laoreet auctor. Curabitur fermentum nunc vitae velit sagittis sollicitudin. "
-                " I'm a junior developer based in Greece. Currently studying at the University of Thessaly at the department of computer science and telecommunications. ",
-                " I have a natural curiosity in finding out how things work and I'm always interested in learning new technologies and crafting amazing designs. I'm super enthusiastic from beginning to end of every project that I'm working on, and eager to see it thrive. "
+                " I'm a junior web developer based in Greece, with a passion for intuitive UI/UX designs. Currently I study at the University of Thessaly at the department of computer science and telecommunications. ",
+                " I have a natural curiosity in finding out how things work and I'm always interested in learning new technologies. ",
+                " My first steps into coding was at a very young age when I got my first arduino kit. From that point on I was hooked, and the thrill that every new challenge game me made it even more addictive. I love crafting amazing designs and delivering the best possible user experience. "
             ]
         },
         projects: [
-            {img: one, title: "A chat service written in C with a simple database to keep truck of the users and the messages they send", link: "https://github.com/JRoussos/chat-service-with-simple-db"},
-            {img: two, title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis vitae lectus.", link: "https://github.com/JRoussos"},
-            {img: three, title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean venenatis vitae lectus.", link: "https://github.com/JRoussos"}
+            {img: bus, title: "An app to inform the users about the routes, the times, the rates and all other kind on info concerning the every-day transportation on the island of Syros", link: "https://github.com/JRoussos/the-bus-project"},
+            {img: film, title: "A web app with minimalistic design, that lets you search for a movie or series and shows you some info about them", link: "https://github.com/JRoussos/the-film-app"},
+            {img: chat, title: "A chat service written in C with a simple database to keep truck of the users and the messages they send", link: "https://github.com/JRoussos/chat-service-with-simple-db"},
         ],
         contact: [
             {icon: git, link: "https://github.com/JRoussos"},

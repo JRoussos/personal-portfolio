@@ -37,7 +37,7 @@ const About = () => {
                     <p>Let's talk about your next project</p>
                     {/* <p>Have something to talk to me about?</p> */}
                     <div className="mail_container" onMouseEnter={() => handleOnEnter()} onMouseLeave={() => handleOnLeave()}>
-                        <a id="send_mail" style={{transform: "translate(0, 0)"}} href="mailto:jroussosdev@gmail.com?subject=Hey John :)">Send me an email</a>
+                        <a id="send_mail" tabIndex="-1" style={{transform: "translate(0, 0)"}} href="mailto:jroussosdev@gmail.com?subject=Hey John :)">Send me an email</a>
                     </div>
                     <hr/>
                 </div>
@@ -47,7 +47,7 @@ const About = () => {
                     <div style={{display: "flex"}}>
                         {store.contents.contact.map((social, index) => (
                             <div className="socials" key={index}>
-                                <a target="_blank" rel="noopener noreferrer" href={social.link}>
+                                <a target="_blank" tabIndex="-1" rel="noopener noreferrer" href={social.link}>
                                     <img onMouseEnter={() => handleMouseEnterSocial(index)} onMouseLeave={() => handleMouseLeaveSocial(index)} src={social.icon} alt={social.link}/>
                                 </a>
                             </div>
@@ -56,7 +56,7 @@ const About = () => {
                 </div>
             </div>
             <div className="copyright">
-                <p>© {new Date().getFullYear()}, <a target="_blank" rel="noopener noreferrer" href="https://github.com/jroussos">J.R.</a></p>
+                <p>© {new Date().getFullYear()}, <a target="_blank" tabIndex="-1" rel="noopener noreferrer" href="https://github.com/jroussos">J.R.</a></p>
             </div>
         </section>
     )

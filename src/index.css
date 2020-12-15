@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'AvertaPE';
-  src: url('./assets/fonts/AvertaDemoPE-Regular.otf');
-  font-weight: normal;
-  font-display: unset;
-}
-
 html, body, #root {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'AvertaPE', 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,8 +10,6 @@ html, body, #root {
   background-color: #000;
   user-select: none;
   scrollbar-width: none;
-
-  --angle: 0deg;
 }
 
 body::-webkit-scrollbar {

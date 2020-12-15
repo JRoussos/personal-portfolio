@@ -31,7 +31,7 @@ const Hamburger = () => {
     }
 
     const handleLink = e => {
-        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.landing') 
+        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
         window.scrollTo(0, section.offsetTop)
         handleClick()
     }
@@ -64,7 +64,7 @@ const Header = () => {
     }, [])
 
     const handleClick = e => {
-        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.landing') 
+        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
         window.scrollTo(0, section.offsetTop)   
     }
 

@@ -3,7 +3,7 @@
     justify-content: flex-start;
     cursor: grab;
     position: relative;
-    margin: -1px 0;
+    margin: -2px 0;
     /* margin-bottom: 10%; */
 
     height: fit-content;
@@ -121,7 +121,6 @@
 
 
 @media screen and (max-width: 850px){
-
     .projects .scroller {
         height: fit-content;
     }

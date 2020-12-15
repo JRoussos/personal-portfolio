@@ -5,14 +5,14 @@ import store from '../assets/utils/store';
 import '../styles/sections/about.css';
 
 const Skills = ({mainBounds}) => {
-    const [ collapse, setCollapse ] = useState([ false, true, true ])
+    const [ collapse, setCollapse ] = useState([ false, true, true, true ])
     const [ heights, setHeights ] = useState([])
 
     const skillsPanel = useRef()
 
     useEffect(() => {
         const array = []
-        for(let i=0; i<3; i++){
+        for(let i=0; i<4; i++){
             array[i] = document.querySelector(`#skill_wrapper_${i} div`).getBoundingClientRect().height || 0
         }
 
@@ -25,6 +25,7 @@ const Skills = ({mainBounds}) => {
         gsap.set(`#skill_wrapper_0 h4`, {"--angle": "45deg"})
         gsap.set(`#skill_wrapper_1 div`, {height: 0})
         gsap.set(`#skill_wrapper_2 div`, {height: 0})
+        gsap.set(`#skill_wrapper_3 div`, {height: 0})
     }
 
     const toggleCollapse = (index, e) => {
