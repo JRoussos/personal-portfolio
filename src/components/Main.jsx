@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Hero from '../sections/Hero';
 import About from '../sections/About';
@@ -9,11 +8,11 @@ import Contact from '../sections/Contact';
 
 import '../styles/main.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Main = () => {
     const scroller = useRef()
     const scrollable = useRef()
+
+    const rAf = useRef()
     
     let currentScrollPosition = 0
     let lastScrollPosition = 0
@@ -22,8 +21,9 @@ const Main = () => {
     const scrollVel = 0.065
 
     useEffect(() => {
-        // setBounds()
-        gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
+        rAf.current = requestAnimationFrame(onTick)
+        return () => cancelAnimationFrame(rAf.current)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleOnScroll = () => {
@@ -38,32 +38,29 @@ const Main = () => {
     window.addEventListener('resize', setBounds, {passive: true})
     window.addEventListener('load', setBounds)
 
-    gsap.ticker.add(() => {
-        const setScrollY = gsap.quickSetter(scrollable.current, 'y', 'px')
+    setTimeout(() => {
+        setBounds()
+        console.log("bounds reset");
+    }, 500);
 
+    const onTick = () => {
         const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
         const step = ( currentScrollPosition - lastScrollPosition ) * delta
 
         lastScrollPosition += step
         const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
 
-        setScrollY(-scrollRounded)
+        const skew = (currentScrollPosition - lastScrollPosition) * skewVel
+        const skewRounded = Math.round(skew * 100) / 100
 
-        const setParallaxY = gsap.quickSetter('.parallax', 'y', 'px')
-        setParallaxY(scrollRounded * 0.2)
-
-        gsap.utils.toArray('.paragraph').forEach((element, i) => {
-            const setParagraph = gsap.quickSetter(element, 'y', 'px')
-            // setParagraph(-(Math.round(step * 100) / 100) * (1+i) * 0.5)
-            setParagraph(-(Math.round(step * 100) / 100) * 1.15)
+        document.querySelector('main .scrollable').style.transform = `translate3d(0, -${scrollRounded}px, 0) skewY(${skewRounded}deg)`
+        document.querySelector('.parallax').style.transform = `translate3d(0, ${scrollRounded * 0.2}px, 0)`
+        document.querySelectorAll('.paragraph').forEach(paragraph => {
+            paragraph.style.transform = `translate3d(0, -${step * 1.35}px, 0)`
         })
 
-
-        const setSkewY = gsap.quickSetter(scrollable.current, 'skewY', 'deg')
-        const skew = (currentScrollPosition - lastScrollPosition) * skewVel
-
-        setSkewY(Math.round(skew * 100) / 100)
-    })
+        rAf.current = requestAnimationFrame(onTick)
+    }
 
     return(
         <main ref={scroller} className="scroller"> {/* the scroll container */}

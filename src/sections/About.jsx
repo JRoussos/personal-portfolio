@@ -75,10 +75,6 @@ const Bio = () => {
 
 
 const About = ({mainBounds}) => {
-    useEffect(() => {
-        gsap.set(".paragraph", {force3D: true, rotation: 0.01})
-    }, [])
-
     return(
         <section className="section about">
             <Skills mainBounds={mainBounds}/>

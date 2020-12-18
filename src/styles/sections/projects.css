@@ -3,7 +3,6 @@
     justify-content: flex-start;
     cursor: grab;
     position: relative;
-    margin: -2px 0;
     /* margin-bottom: 10%; */
 
     height: fit-content;
@@ -65,7 +64,7 @@
     min-height: 350px;
     
     object-fit: cover;
-    object-position: left;
+    object-position: center;
     
     pointer-events: none;
     box-shadow: 0 2px 6px -2px #111111;

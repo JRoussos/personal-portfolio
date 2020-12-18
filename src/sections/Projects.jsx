@@ -7,6 +7,7 @@ import '../styles/sections/projects.css';
 
 const Projects = () => {
     const scrollable = useRef()
+    const rAf = useRef()
     
     let currentScrollPosition = 0
     let lastScrollPosition = 0
@@ -22,7 +23,9 @@ const Projects = () => {
     const scaleVel = 0.1
 
     useEffect(() => {
-        gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
+        rAf.current = requestAnimationFrame(onTick)
+        return () => cancelAnimationFrame(rAf.current)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleMouseMove = e => {
@@ -77,34 +80,28 @@ const Projects = () => {
     window.addEventListener('resize', setBounds, {passive: true})
     window.addEventListener('load', setBounds, {passive: true})
 
-    gsap.ticker.add(() => {
-        const setScrollX = gsap.quickSetter(scrollable.current, 'x', 'px')
-        const setScaleY = gsap.quickSetter('.slide-image', 'scaleY')
-
+    const onTick = () => {
         const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
         const step = ( currentScrollPosition - lastScrollPosition ) * delta
         
         lastScrollPosition += step
-        const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
 
         const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
 
-        setScaleY(scaleY)
-        setScrollX(-scrollRounded)
-        
-        gsap.utils.toArray('.text').forEach(element => {
-            const setParagraph = gsap.quickSetter(element, 'x', 'px')
-            setParagraph((Math.round( step * 100 ) / 100) * 0.5)
+        document.querySelector('.slide-image').style.transform = `scaleY(${scaleY})`
+        document.querySelectorAll('.projects .text').forEach(element => {
+            element.style.transform = `translate3d(${step * 0.5}px, 0, 0)`
         })
 
-        const setSkewY = gsap.quickSetter(scrollable.current, 'skewX', 'deg')
         const skew = (currentScrollPosition - lastScrollPosition) * skewVel
-
-        setSkewY(Math.round(skew * 100) / 100)
+        const skewRounded = Math.round(skew * 100) / 100
+        document.querySelector('.projects .scrollable').style.transform = `translate3d(-${lastScrollPosition}px, 0, 0) skewX(${skewRounded}deg)`
 
         const scale = (invlerp(0, boundMax, lastScrollPosition))
         document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scale})`
-    })
+
+        rAf.current = requestAnimationFrame(onTick)
+    }
 
     return(
         <section id="projects" className="section projects">

@@ -16,6 +16,10 @@ I learned a lot building this site, mainly how to create complex animation such 
 [react-device-detect](https://www.npmjs.com/package/react-device-detect) for serving different versions of the page in mobile and browser. <br>
 [firebase](https://www.npmjs.com/package/firebase) for hosting, storage, database and analytics
 
+### Problems & solutions: 
+
+I was using the ticker functionality of gsap for the smooth scroll of the page and also the projects slider but I noticed that for some reason I was having a few droped frames here and there, and in firefox it was basically unusable (major lags). And the solution was to switch to a good old requestAnimationFrame. 
+
 
 ## To do next
 

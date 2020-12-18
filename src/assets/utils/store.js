@@ -7,7 +7,7 @@ import tw from '../icons/twitter.png';
 // Projects
 import chat from '../img/projects/chat.jpg';
 import bus from '../img/projects/bus.jpg';
-import film from '../img/projects/film.jpg';
+// import film from '../img/projects/film.jpg';
 
 
 const store = {
@@ -27,7 +27,7 @@ const store = {
         },
         projects: [
             {img: bus, title: "An app to inform the users about the routes, the times, the rates and all other kind on info concerning the every-day transportation on the island of Syros", link: "https://github.com/JRoussos/the-bus-project"},
-            {img: film, title: "A web app with minimalistic design, that lets you search for a movie or series and shows you some info about them", link: "https://github.com/JRoussos/the-film-app"},
+            // {img: film, title: "A web app with minimalistic design, that lets you search for a movie or series and shows you some info about them", link: "https://github.com/JRoussos/the-film-app"},
             {img: chat, title: "A chat service written in C with a simple database to keep truck of the users and the messages they send", link: "https://github.com/JRoussos/chat-service-with-simple-db"},
         ],
         contact: [

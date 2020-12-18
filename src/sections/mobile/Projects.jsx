@@ -7,6 +7,7 @@ import '../../styles/sections/projects.css';
 
 const Projects = () => {
     const scrollable = useRef()
+    const rAf = useRef()
     
     let currentScrollPosition = 0
     let lastScrollPosition = 0
@@ -15,11 +16,13 @@ const Projects = () => {
     let boundWidth = 0
 
     const scrollVel = 0.065
-    // const scaleVel = 0.1
+    const scaleVel = 0.05
 
     useEffect(() => {
-        gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
         setBounds()
+
+        rAf.current = requestAnimationFrame(onTick)
+        return () => cancelAnimationFrame(rAf.current)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -39,26 +42,33 @@ const Projects = () => {
             boundMax = boundWidth - window.innerWidth
         })
 
-        document.querySelector('.projects .scrollable').style.width = `${boundMax}px`        
+        document.querySelector('.projects .scrollable').style.width = `${generalWidth}px`        
     }
 
     window.addEventListener('resize', setBounds, {passive: true})
 
-    gsap.ticker.add(() => {
-        // const setScaleY = gsap.quickSetter(scrollable.current, 'scaleY')
-
+    const onTick = () => {
         const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
         const step = ( currentScrollPosition - lastScrollPosition ) * delta
         
         lastScrollPosition += step
         const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
 
-        // const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
-        // setScaleY(scaleY)
+        const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
+        document.querySelectorAll('.slide-image').forEach(image => {
+            image.style.transform = `scaleY(${scaleY})`
+        })
+
+
+        document.querySelectorAll('.projects .text').forEach(element => {
+            element.style.transform = `translate3d(${step * 0.65}px, 0, 0)`
+        })
         
-        const scale = (invlerp(0, boundMax.toFixed(2), scrollRounded))
-        document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scale})`
-    })
+        const scaleX = (invlerp(0, boundMax.toFixed(2), scrollRounded))
+        document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scaleX})`
+
+        rAf.current = requestAnimationFrame(onTick)
+    }
 
     return(
         <section className="section projects">

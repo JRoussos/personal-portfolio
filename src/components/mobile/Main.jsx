@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Hero from '../../sections/Hero';
 import About from '../../sections/About';
@@ -9,11 +8,11 @@ import Contact from '../../sections/mobile/Contact';
 
 import '../../styles/main.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Main = () => {
     const scroller = useRef()
     const scrollable = useRef()
+
+    const requestRef = useRef()
     
     let currentScrollPosition = 0
     let lastScrollPosition = 0
@@ -22,7 +21,10 @@ const Main = () => {
 
     useEffect(() => {
         setBounds()
-        gsap.set(scrollable.current, {force3D: true, rotation: 0.01})
+
+        requestRef.current = requestAnimationFrame(onTick)
+        return () => cancelAnimationFrame(requestRef.current)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const handleOnScroll = () => {
@@ -37,20 +39,23 @@ const Main = () => {
     window.addEventListener('resize', setBounds, {passive: true})
     // window.addEventListener('load', setBounds, {passive: true})
 
-    gsap.ticker.add(() => {
-        const setScrollY = gsap.quickSetter(scrollable.current, 'y', 'px')
+    setTimeout(() => {
+        setBounds()
+        console.log("bounds reset");
+    }, 500);
 
+    const onTick = () => {
         const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
+        const step = ( currentScrollPosition - lastScrollPosition ) * delta
+        lastScrollPosition += step
 
-        lastScrollPosition += ( currentScrollPosition - lastScrollPosition ) * delta
-        const scrollRounded = Math.round(lastScrollPosition * 100) / 100
-        // const scrollRounded = lastScrollPosition.toFixed(2)
+        const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
 
-        setScrollY(-scrollRounded)
+        document.querySelector('main .scrollable').style.transform = `translate3d(0, -${scrollRounded}px, 0)`
+        document.querySelector('.parallax').style.transform = `translate3d(0, ${scrollRounded * 0.2}px, 0)`
 
-        // const setParallaxY = gsap.quickSetter('.parallax', 'y', 'px')
-        // setParallaxY(scrollRounded * 0.08)
-    })
+        requestRef.current = requestAnimationFrame(onTick)
+    }
 
     return(
         <main ref={scroller} className="scroller"> {/* the scroll container */}

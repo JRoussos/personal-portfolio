@@ -41,22 +41,6 @@ const Contact = () => {
         }
     }, [inView])
 
-    const handleMouseEnterSocial = i => {
-        gsap.utils.toArray('.socials').forEach( (social, index) => {
-            if(index !== i){
-                gsap.to(social, {duration: .6, opacity: .4, ease: "circ.out"})
-            }
-        })
-    }
-
-    const handleMouseLeaveSocial = i => {
-        gsap.utils.toArray('.socials').forEach( (social, index) => {
-            if(index !== i){
-                gsap.to(social, {duration: .6, opacity: 1, ease: "circ.out"})
-            }
-        })
-    }
-
     return(
         <section ref={refItem} className="section contact">
             <div className="mail_wrapper">
@@ -76,7 +60,7 @@ const Contact = () => {
                         {socials.map((social, index) => (
                             <div className="socials" key={index}>
                                 <a target="_blank" rel="noopener noreferrer" href={social.link}>
-                                    <img onMouseEnter={() => handleMouseEnterSocial(index)} onMouseLeave={() => handleMouseLeaveSocial(index)} src={social.icon} alt={social.link}/>
+                                    <img src={social.icon} alt={social.link}/>
                                 </a>
                             </div>
                         ))}

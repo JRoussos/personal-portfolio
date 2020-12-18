@@ -44,6 +44,10 @@
     transform: rotateZ( var(--angle));
 }
 
+.about .paragraph {
+    will-change: transform;
+}
+
 .about hr {
     transform: translateZ(1px) rotate(0.01deg);
     margin-left: -10px;

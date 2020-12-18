@@ -6,22 +6,18 @@ import '../../styles/header.css';
 const Hamburger = () => {
     const [ toggle, setToggle ] = useState(false)
 
-    useEffect(() => {
-        gsap.set('.line', {force3D: true, rotation: 0.01})
-    }, [])
-
     const handleClick = () => {
         if(toggle) {
-            gsap.to('.line:nth-child(1)', {duration: .6, rotateZ: 0, marginTop: 4, y: 0})
-            gsap.to('.line:nth-child(2)', {duration: .6, rotateZ: 0, opacity: 1})
-            gsap.to('.line:nth-child(3)', {duration: .6, rotateZ: 0, marginTop: 4, y: 0})
+            gsap.to('.line:nth-child(1)', {duration: .6, force3D: true, rotateZ: 0, marginTop: 4, y: 0})
+            gsap.to('.line:nth-child(2)', {duration: .6, force3D: true, rotateZ: 0, opacity: 1})
+            gsap.to('.line:nth-child(3)', {duration: .6, force3D: true, rotateZ: 0, marginTop: 4, y: 0})
 
             gsap.to('.menu-inner', {duration: .8, top: "-60vh", ease: "power3.out"})
             gsap.to('.menu', {duration: .6, opacity: 0, ease: "power3.out"})
         }else{
-            gsap.to('.line:nth-child(1)', {duration: .6, rotateZ: 315, marginTop: 0, y: 4})
-            gsap.to('.line:nth-child(2)', {duration: .6, rotateZ: 225, opacity: 0})
-            gsap.to('.line:nth-child(3)', {duration: .6, rotateZ: 225, marginTop: 0, y: -4})
+            gsap.to('.line:nth-child(1)', {duration: .6, force3D: true, rotateZ: 315, marginTop: 0, y: 4})
+            gsap.to('.line:nth-child(2)', {duration: .6, force3D: true, rotateZ: 225, opacity: 0})
+            gsap.to('.line:nth-child(3)', {duration: .6, force3D: true, rotateZ: 225, marginTop: 0, y: -4})
 
             gsap.to('.menu-inner', {duration: .8, top: 0, ease: "power3.out"})
             gsap.to('.menu', {duration: .6, opacity: 1, ease: "power3.out"})
@@ -68,18 +64,10 @@ const Header = () => {
         window.scrollTo(0, section.offsetTop)   
     }
 
-    const handleMouseOverLogo = e => {
-        // gsap.to(e.target, {duration: .6, x: 5, rotateY: 10, skewY: 4, ease: "sine.out"})
-    }
-
-    const handleMouseLeaveLogo = e => {
-        // gsap.to(e.target, {duration: .6, delay: .2, rotateY: 0, x: -5, skewY: 0, ease: "sine.out"})
-    }
-
     return(
         <header>
             <div className='header-inner'>
-                <div onClick={e => handleClick(e)} onMouseOver={e => handleMouseOverLogo(e)} onMouseLeave={e => handleMouseLeaveLogo(e)} className='logo fade inview'>John Roussos</div>
+                <div onClick={e => handleClick(e)} className='logo fade inview'>John Roussos</div>
                 <Hamburger/>
             </div>
         </header>
