@@ -25,6 +25,16 @@
     margin: 10px 0;
 }
 
+.contact p img {
+    width: 3vw;
+    min-width: 35px;
+    max-width: 5em;
+
+    position: absolute;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
 .contact .mail_wrapper hr {
     margin-left: -10px;
     width: 110%;
@@ -109,5 +119,12 @@
  
     .contact .mail_container a {
         font-size: clamp(23px, 4vw, 34px);
+    }
+
+    .contact p img {
+        width: 1.3vw;
+        min-width: 24px;
+        max-width: 35px;
+        padding-left: 2px;
     }
 }

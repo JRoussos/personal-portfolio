@@ -1,24 +1,43 @@
 .cursor {
-    /* gsap init styles */
     opacity: 0;
     transform: scale(0);
 
-    position: fixed;
-    top: -5px;
-    left: -5px;
-
     mix-blend-mode: difference;
-
     pointer-events: none;
-    will-change: transform;
+    /* will-change: transform; */
     
-    z-index: 100;
-    
-    content: var(--dot);
+    z-index: 100; 
+    animation: transition_animation 1s 4s ease-out;
     
     --dot: url(../assets/img/dot.svg);
     --drag: url(../assets/img/drag.svg);
     --circle: url(../assets/img/circle.svg);
+}
+
+.dot {
+    position: fixed;
+    top: -4px;
+    left: -4px;
+
+    animation: transition_animation 1s ease-out;
+    content: var(--dot);
+}
+
+.drag {
+    position: fixed;
+    top: -5px;
+    left: -5px;
+
+    content: var(--drag);
+}
+
+.circle {
+    position: fixed;
+    top: -21px;
+    left: -29px;
+    
+    animation: transition_animation 1s ease-out;
+    content: var(--circle);
 }
 
 .cursor-inner {
@@ -31,4 +50,9 @@
     border: 1px solid white;
     height: 50px;
     width: 50px;
+}
+
+@keyframes transition_animation {
+    0%   { transform: scale(0); }
+    100% { transform: scale(1); }
 }

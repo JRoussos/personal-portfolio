@@ -6,7 +6,7 @@
     /* margin-bottom: 10%; */
 
     height: fit-content;
-    will-change: transform;
+    /* will-change: transform; */
 }
 
 .projects .scroller::-webkit-scrollbar {

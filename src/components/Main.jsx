@@ -55,9 +55,9 @@ const Main = () => {
 
         document.querySelector('main .scrollable').style.transform = `translate3d(0, -${scrollRounded}px, 0) skewY(${skewRounded}deg)`
         document.querySelector('.parallax').style.transform = `translate3d(0, ${scrollRounded * 0.2}px, 0)`
-        document.querySelectorAll('.paragraph').forEach(paragraph => {
-            paragraph.style.transform = `translate3d(0, -${step * 1.35}px, 0)`
-        })
+        // document.querySelectorAll('.paragraph').forEach(paragraph => {
+        //     paragraph.style.transform = `translate3d(0, -${step * 1.35}px, 0)`
+        // })
 
         rAf.current = requestAnimationFrame(onTick)
     }

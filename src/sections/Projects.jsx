@@ -35,16 +35,18 @@ const Projects = () => {
         currentScrollPosition = clamp(currentScrollPosition, 0, boundMax) // prevent dragging out of bound
     }
 
-    const handleMouseLeave = (pointer) => {
+    const handleMouseLeave = () => {
         gsap.timeline()
-            .to('.cursor', {duration: .2, scale: 0})
-            .to('.cursor', {duration: .2, scale: 1, content: `var(--${pointer})`}) //dot
+            .to('#cursor', {duration: .2, scale: 0})
+            .set('#cursor', {className: "cursor dot"})
+            .to('#cursor', {duration: .2, scale: 1})
     }
 
-    const handleMouseEnter = (pointer) => {
+    const handleMouseEnter = () => {
         gsap.timeline()
-            .to('.cursor', {duration: .2, scale: 0})
-            .to('.cursor', {duration: .2, scale: 1, content: `var(--${pointer})`}) //drag
+            .to('#cursor', {duration: .2, scale: 0})
+            .set('#cursor', {className: "cursor circle"})
+            .to('#cursor', {duration: .2, scale: 1})
     }
 
     const handleMouseDown = e => {
@@ -99,7 +101,7 @@ const Projects = () => {
 
         const scale = (invlerp(0, boundMax, lastScrollPosition))
         document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scale})`
-
+        
         rAf.current = requestAnimationFrame(onTick)
     }
 
@@ -109,8 +111,8 @@ const Projects = () => {
                 onMouseMove={e => handleMouseMove(e)} 
                 onPointerDown={e => handleMouseDown(e)} 
                 onPointerUp={e => handleMouseUp(e)} 
-                onMouseLeave={() => handleMouseLeave("dot")}
-                onMouseEnter={() => handleMouseEnter("drag")}> {/* the scroll container */}
+                onMouseLeave={() => handleMouseLeave()}
+                onMouseEnter={() => handleMouseEnter()}> {/* the scroll container */}
                 <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
                     
                     <div className="bound">

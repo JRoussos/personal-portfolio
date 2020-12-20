@@ -1,54 +1,20 @@
-import React, { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
 
+import victory from '../../assets/img/victory-hand_small.png';
+import store from '../../assets/utils/store';
 import '../../styles/sections/contact.css';
 
-import git from '../../assets/icons/github.png';
-import fb from '../../assets/icons/facebook.png';
-import ins from '../../assets/icons/instagram.png';
-import tw from '../../assets/icons/twitter.png';
-
-const socials = [
-    {
-        icon: git,
-        link: "https://github.com/JRoussos"
-    },
-    {
-        icon: fb,
-        link: "https://facebook.com/giannhs.roussos.s/"
-    },
-    {
-        icon: ins,
-        link: "https://www.instagram.com/giannhs_r/"
-    },
-    {
-        icon: tw,
-        link: "https://twitter.com/giannhs41"
-    }
-]
-
 const Contact = () => {
-    const [refItem, inView] = useInView({
-        threshold: 0.9,
-    });
-
-    useEffect(() => {
-        if(inView){
-            gsap.to('.inview', {duration: .4, "--inview": "#fff"})
-        }else{
-            gsap.to('.inview', {duration: .4, "--inview": "#000"})
-        }
-    }, [inView])
 
     return(
-        <section ref={refItem} className="section contact">
+        <section className="section contact">
             <div className="mail_wrapper">
                 <div>
-                    <p>Let's talk about your next project</p>
+                    <p>Hey don't be a stranger, reach out
+                        <img src={victory} alt="victory sign"/>
+                    </p>
                     {/* <p>Have something to talk to me about?</p> */}
                     <div className="mail_container">
-                        {/* <p style={{fontSize: "15px", margin: "10px 0 5px"}}>Send me an email</p> */}
                         <a id="send_mail" style={{transform: "translate(0, 0)"}} href="mailto:jroussosdev@gmail.com?subject=Hey John :)">jroussosdev@gmail.com</a>
                     </div>
                     <hr/>
@@ -57,7 +23,7 @@ const Contact = () => {
                 <div className="icon_container">
                     <p>follow me on</p>
                     <div style={{display: "flex"}}>
-                        {socials.map((social, index) => (
+                        {store.contents.contact.map((social, index) => (
                             <div className="socials" key={index}>
                                 <a target="_blank" rel="noopener noreferrer" href={social.link}>
                                     <img src={social.icon} alt={social.link}/>

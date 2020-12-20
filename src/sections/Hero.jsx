@@ -35,7 +35,7 @@ const Hero = () => {
         <section className="section hero">
             <div ref={refItem} className="text">
                 <div className="parallax">
-                    <h1 className="welcome">Hey, I'm John, a front-end developer <br/> and software engineer.
+                    <h1 className="welcome">Hi I'm John, a front-end developer <br/> and software engineer.
                         <span className="wave_wrapper">
                             <img id="wave" src={wave} alt="waving hand"/>
                         </span>

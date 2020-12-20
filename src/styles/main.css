@@ -10,7 +10,8 @@ main {
 }
 
 main .scrollable {
-    will-change: transform;
+    transform: translate3d(0, 1px, 0);
+    /* will-change: transform; */
 }
 
 .section {

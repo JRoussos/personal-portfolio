@@ -4,8 +4,9 @@ header {
     padding: 20px 0;
     font-size: 25px;    
     z-index: 10;
-    user-select: none;
 
+    user-select: none;
+    pointer-events: none;
     /* background: linear-gradient(#f7f8fa, transparent); */
 }
 
@@ -26,6 +27,7 @@ header {
     white-space: pre;
     perspective: 10px;
 
+    pointer-events: all;
     user-select: none;
     -webkit-tap-highlight-color:transparent;
 }
@@ -54,6 +56,7 @@ header {
     color: #17181a;
     text-transform: lowercase;
 
+    pointer-events: all;
     user-select: none;
     cursor: pointer;
 }
@@ -76,7 +79,7 @@ header {
     margin-top: 4px;
     width: 30px;
     border-radius: 8px;
-    will-change: transform;
+    /* will-change: transform; */
 }
 
 .hamburger {
@@ -89,6 +92,7 @@ header {
     align-items: center;
     cursor: pointer;
 
+    pointer-events: all;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -108,7 +112,6 @@ header {
     position: absolute;
     top: -60vh;
     left: 0;
-    height: 60vh;
     width: 100%;
     background-color: #f7f8fa;
     box-shadow: 0 10px 50px #17181a88;
@@ -118,7 +121,8 @@ header {
 .menu .magnet-links {
     height: 100%;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 21vh;
+    padding-bottom: 2vh;
     margin: 0;
     flex-direction: column;
     justify-content: center;

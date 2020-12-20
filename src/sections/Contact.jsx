@@ -1,10 +1,11 @@
 import React from 'react';
 import { gsap } from 'gsap';
 
+import victory from '../assets/img/victory-hand_small.png';
 import store from '../assets/utils/store';
 import '../styles/sections/contact.css';
 
-const About = () => {
+const Contact = () => {
 
     const handleOnEnter = () => {
         gsap.to('#send_mail', {duration: .6, y: -100, ease: "power3.inOut"})
@@ -34,7 +35,10 @@ const About = () => {
         <section className="section contact">
             <div className="mail_wrapper">
                 <div>
-                    <p>Let's talk about your next project</p>
+                    <p>Hey don't be a stranger, reach out
+                        <img src={victory} alt="victory sign"/>
+                    </p>
+                    {/* <p>Let's talk about your next project</p> */}
                     {/* <p>Have something to talk to me about?</p> */}
                     <div className="mail_container" onMouseEnter={() => handleOnEnter()} onMouseLeave={() => handleOnLeave()}>
                         <a id="send_mail" tabIndex="-1" style={{transform: "translate(0, 0)"}} href="mailto:jroussosdev@gmail.com?subject=Hey John :)">Send me an email</a>
@@ -62,4 +66,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default Contact;

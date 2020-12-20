@@ -25,8 +25,8 @@ const Cursor = () => {
     useEffect(() => {
         window.addEventListener("mousemove", e => mousePos(e))
 
-        gsap.set('.cursor', {force3D: true, rotation: 0.01})
-        tl.current.to('.dot', {duration: .5, opacity: 1, scale: 1, ease: 'power3.inOut'})
+        gsap.set('#cursor', {force3D: true, rotation: 0.01})
+        tl.current.to('#cursor', {duration: .5, opacity: 1, scale: 1, ease: 'power3.inOut'})
 
         document.getElementById('root').addEventListener("mouseleave", () => { tl.current.reverse() })
         document.getElementById('root').addEventListener("mouseover", () => { tl.current.play() })
