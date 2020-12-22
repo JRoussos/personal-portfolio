@@ -3,7 +3,8 @@ import { gsap } from 'gsap';
 import { useInView } from 'react-intersection-observer';
 
 import wave from '../assets/img/waving-hand.png';
-import image from '../assets/img/image.jpg';
+import image from '../assets/img/image.webp';
+// import image from '../assets/img/profile.jpg';
 
 import '../styles/sections/hero.css';
 
@@ -34,8 +35,8 @@ const Hero = () => {
     return(
         <section className="section hero">
             <div ref={refItem} className="text">
-                <div className="parallax">
-                    <h1 className="welcome">Hi I'm John, a front-end developer <br/> and software engineer.
+                <div id="parallax">
+                    <h1 className="welcome">Hi, I'm John, a front-end developer <br/> and software engineer.
                         <span className="wave_wrapper">
                             <img id="wave" src={wave} alt="waving hand"/>
                         </span>

@@ -111,18 +111,10 @@ const Header = () => {
         window.scrollTo(0, section.offsetTop)   
     }
 
-    const handleMouseOverLogo = e => {
-        // gsap.to(e.target, {duration: .6, x: 5, rotateY: 10, skewY: 4, ease: "sine.out"})
-    }
-
-    const handleMouseLeaveLogo = e => {
-        // gsap.to(e.target, {duration: .6, delay: .2, rotateY: 0, x: -5, skewY: 0, ease: "sine.out"})
-    }
-
     return(
         <header>
             <div className='header-inner'>
-                <div onClick={e => handleClick(e)} onMouseOver={e => handleMouseOverLogo(e)} onMouseLeave={e => handleMouseLeaveLogo(e)} className='logo fade'>John Roussos</div>
+                <div onClick={e => handleClick(e)} className='logo fade'>John Roussos</div>
                 {size.width < 850 ? <Hamburger/> : 
                     <div className='magnet-links'>
                         <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className="magnet fade">about</button>

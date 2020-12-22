@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
 
 import Hero from '../../sections/Hero';
 import About from '../../sections/About';
@@ -29,10 +28,11 @@ const Main = () => {
     
     const handleOnScroll = () => {
         currentScrollPosition = window.scrollY
+        // return () => cancelAnimationFrame(requestRef.current)
     }
 
     const setBounds = () => {
-        document.body.style.height = `${document.querySelector('.scrollable').getBoundingClientRect().height}px`
+        document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
     }
 
     window.addEventListener('scroll', handleOnScroll, { passive: true })
@@ -45,21 +45,21 @@ const Main = () => {
     }, 500);
 
     const onTick = () => {
-        const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
-        const step = ( currentScrollPosition - lastScrollPosition ) * delta
-        lastScrollPosition += step
+        // const delta = 1.0 - Math.pow(1.0 - scrollVel, gsap.ticker.deltaRatio())
 
-        const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
+        const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
+        lastScrollPosition += Math.round(step * 100) / 100
 
-        document.querySelector('main .scrollable').style.transform = `translate3d(0, -${scrollRounded}px, 0)`
-        document.querySelector('.parallax').style.transform = `translate3d(0, ${scrollRounded * 0.2}px, 0)`
+        // change querySelector to getElementById for performance reasons
+        document.getElementById('scrollable').style.transform = `translate3d(0, -${lastScrollPosition}px, 0)`
+        document.getElementById('parallax').style.transform = `translate3d(0, ${lastScrollPosition* 0.2}px, 0)`
 
         requestRef.current = requestAnimationFrame(onTick)
     }
 
     return(
         <main ref={scroller} className="scroller"> {/* the scroll container */}
-            <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
+            <div ref={scrollable} id="scrollable" className="scrollable"> {/* the scrollable content */}
                 <Hero/>
                 <About mainBounds={setBounds}/>
                 <Projects/>

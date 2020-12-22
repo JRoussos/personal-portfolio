@@ -3,10 +3,8 @@
     justify-content: flex-start;
     cursor: grab;
     position: relative;
-    /* margin-bottom: 10%; */
 
     height: fit-content;
-    /* will-change: transform; */
 }
 
 .projects .scroller::-webkit-scrollbar {
@@ -31,6 +29,8 @@
     white-space: nowrap;
     align-items: center;
     position: relative;
+
+    will-change: transform;
 }
 
 .projects .head {

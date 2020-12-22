@@ -48,14 +48,13 @@ const Projects = () => {
     window.addEventListener('resize', setBounds, {passive: true})
 
     const onTick = () => {
-        const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
-        const step = ( currentScrollPosition - lastScrollPosition ) * delta
-        
-        lastScrollPosition += step
-        const scrollRounded = Math.round( lastScrollPosition * 100 ) / 100
+        // const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
+
+        const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
+        lastScrollPosition += Math.round(step * 100) / 100
 
         const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
-        document.querySelector('.projects .scrollable').style.transform = `scaleY(${scaleY})`
+        document.getElementById('scrollable_projects').style.transform = `scaleY(${scaleY})`
 
         // document.querySelectorAll('.slide-image').forEach(image => {
         //     image.style.transform = `skewX(${skewRounded}deg)`
@@ -65,8 +64,8 @@ const Projects = () => {
             element.style.transform = `translate3d(${step * 2}px, 0, 0)`
         })
         
-        const scaleX = (invlerp(0, boundMax.toFixed(2), scrollRounded))
-        document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scaleX})`
+        const scaleX = (invlerp(0, boundMax.toFixed(2), lastScrollPosition))
+        document.getElementById('scrollbar_id').style.transform = `scaleX(${scaleX})`
 
         rAf.current = requestAnimationFrame(onTick)
     }
@@ -74,7 +73,7 @@ const Projects = () => {
     return(
         <section className="section projects">
             <div className="scroller" style={{overflowX: "scroll"}} onScroll={e => handleScroll(e)}> {/* the scroll container */}
-                <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
+                <div ref={scrollable} id="scrollable_projects" className="scrollable"> {/* the scrollable content */}
                     
                     <div className="bound">
                         <h4 className="head">PROJECTS</h4>
@@ -99,7 +98,7 @@ const Projects = () => {
             </div>
 
             <div className="scrollbar">
-                <div className="scrollbar-inner"></div>
+                <div id="scrollbar_id" className="scrollbar-inner"></div>
             </div>
         </section>
     )

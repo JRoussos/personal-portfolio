@@ -83,24 +83,26 @@ const Projects = () => {
     window.addEventListener('load', setBounds, {passive: true})
 
     const onTick = () => {
-        const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
-        const step = ( currentScrollPosition - lastScrollPosition ) * delta
-        
-        lastScrollPosition += step
+        // const delta = 1 - Math.pow(1 - scrollVel, gsap.ticker.deltaRatio())
+
+        const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
+        lastScrollPosition += Math.round(step * 100) / 100
 
         const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
 
-        document.querySelector('.slide-image').style.transform = `scaleY(${scaleY})`
+        document.querySelectorAll('.slide-image').forEach(image => {
+            image.style.transform = `scaleY(${scaleY})`
+        })
         document.querySelectorAll('.projects .text').forEach(element => {
             element.style.transform = `translate3d(${step * 0.5}px, 0, 0)`
         })
 
         const skew = (currentScrollPosition - lastScrollPosition) * skewVel
-        const skewRounded = Math.round(skew * 100) / 100
-        document.querySelector('.projects .scrollable').style.transform = `translate3d(-${lastScrollPosition}px, 0, 0) skewX(${skewRounded}deg)`
+        // const skewRounded = Math.round(skew * 100) / 100
+        document.getElementById('scrollable_projects').style.transform = `translate3d(-${lastScrollPosition}px, 0, 0) skewX(${skew}deg)`
 
         const scale = (invlerp(0, boundMax, lastScrollPosition))
-        document.querySelector('.scrollbar-inner').style.transform = `scaleX(${scale})`
+        document.getElementById("scrollbar_id").style.transform = `scaleX(${scale})`
         
         rAf.current = requestAnimationFrame(onTick)
     }
@@ -113,7 +115,7 @@ const Projects = () => {
                 onPointerUp={e => handleMouseUp(e)} 
                 onMouseLeave={() => handleMouseLeave()}
                 onMouseEnter={() => handleMouseEnter()}> {/* the scroll container */}
-                <div ref={scrollable} className="scrollable"> {/* the scrollable content */}
+                <div ref={scrollable} id="scrollable_projects" className="scrollable"> {/* the scrollable content */}
                     
                     <div className="bound">
                         <h4 className="head">PROJECTS</h4>
@@ -138,7 +140,7 @@ const Projects = () => {
             </div>
 
             <div className="scrollbar">
-                <div className="scrollbar-inner"></div>
+                <div id="scrollbar_id" className="scrollbar-inner"></div>
             </div>
         </section>
     )

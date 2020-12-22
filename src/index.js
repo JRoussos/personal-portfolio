@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 // import App from './components/ComingSoon';
 // import reportWebVitals from './reportWebVitals';
-import firebase from './firebase';
+
+// import firebase from './firebase';
 
 import './index.css';
 import './assets/fonts/font.css';
 
-firebase.analytics();
+// firebase.analytics();
 
 ReactDOM.render(
   <React.StrictMode>
