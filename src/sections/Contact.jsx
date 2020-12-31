@@ -1,7 +1,8 @@
 import React from 'react';
 import { gsap } from 'gsap';
 
-import victory from '../assets/img/victory-hand_small.png';
+import victory_small from '../assets/img/victory-hand_small.png';
+import victory_large from '../assets/img/victory-hand.png';
 import store from '../assets/utils/store';
 import '../styles/sections/contact.css';
 
@@ -36,7 +37,7 @@ const Contact = () => {
             <div className="mail_wrapper">
                 <div>
                     <p>Hey don't be a stranger, reach out
-                        <img src={victory} alt="victory sign"/>
+                        <img src={victory_small} srcSet={`${victory_small}, ${victory_large} 2x`} alt="victory sign"/>
                     </p>
                     {/* <p>Let's talk about your next project</p> */}
                     {/* <p>Have something to talk to me about?</p> */}

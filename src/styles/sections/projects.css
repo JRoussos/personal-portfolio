@@ -30,7 +30,7 @@
     align-items: center;
     position: relative;
 
-    will-change: transform;
+    /* will-change: transform; */
 }
 
 .projects .head {

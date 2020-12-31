@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useInView } from 'react-intersection-observer';
 
-import wave from '../assets/img/waving-hand.png';
-import image from '../assets/img/image.webp';
-// import image from '../assets/img/profile.jpg';
+import wave_large from '../assets/img/waving-hand.png';
+import wave_small from '../assets/img/waving-hand_small.png';
+// import image from '../assets/img/image.webp';
+import image from '../assets/img/profile.webp';
 
 import '../styles/sections/hero.css';
 
@@ -38,7 +39,7 @@ const Hero = () => {
                 <div id="parallax">
                     <h1 className="welcome">Hi, I'm John, a front-end developer <br/> and software engineer.
                         <span className="wave_wrapper">
-                            <img id="wave" src={wave} alt="waving hand"/>
+                            <img id="wave" src={wave_large} srcSet={`${wave_small}, ${wave_large} 2x`} alt="waving hand"/>
                         </span>
                     </h1>
                 </div>

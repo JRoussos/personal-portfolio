@@ -16,7 +16,7 @@ const Projects = () => {
     let boundWidth = 0
 
     const scrollVel = 0.065
-    const scaleVel = 0.03
+    // const scaleVel = 0.03
 
     useEffect(() => {
         setBounds()
@@ -53,15 +53,14 @@ const Projects = () => {
         const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
         lastScrollPosition += Math.round(step * 100) / 100
 
-        const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
-        document.getElementById('scrollable_projects').style.transform = `scaleY(${scaleY})`
+        // const scaleY = 1 - Math.abs(( (currentScrollPosition - lastScrollPosition) / window.innerWidth ) * scaleVel)
 
         // document.querySelectorAll('.slide-image').forEach(image => {
-        //     image.style.transform = `skewX(${skewRounded}deg)`
+        //     image.style.transform = `scale(${scaleY})`
         // })
 
         document.querySelectorAll('.projects .text').forEach(element => {
-            element.style.transform = `translate3d(${step * 2}px, 0, 0)`
+            element.style.transform = `translate3d(${step}px, 0, 0)`
         })
         
         const scaleX = (invlerp(0, boundMax.toFixed(2), lastScrollPosition))
