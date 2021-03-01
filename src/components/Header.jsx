@@ -60,8 +60,7 @@ const Header = () => {
 
     useEffect(() => {
         gsap.set('.magnet', {force3D: true, rotation: 0.01})
-
-        gsap.set('.fade', {opacity: 0, y: -15})
+        
         gsap.to('.fade', {duration: 0.4, delay: 0.2, y: 0, opacity: 1, ease: "circ.out", stagger: 0.04})
 
         return () => { window.removeEventListener('mousemove', handleMouseMove) }

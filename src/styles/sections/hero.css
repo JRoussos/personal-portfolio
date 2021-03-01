@@ -16,7 +16,11 @@
     font-size: clamp(30px, 2.7vw, 4.3rem);
     font-weight: normal;
     margin: 0;
-    line-height: 1.5em;
+    
+    /* gsap initial values */
+    line-height: 2.5em;
+    transform: translateY(70px);
+    opacity: 0;
 }
 
 .hero .mask {
@@ -35,6 +39,10 @@
     box-shadow: 0 2px 6px -2px #111111;
 
     filter: contrast(0.8);
+
+    /* gsap initial values */
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .wave_wrapper {

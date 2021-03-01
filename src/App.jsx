@@ -21,9 +21,7 @@ const Fallback = () => (
     display: "flex", 
     justifyContent: "center", 
     alignItems: "center" 
-  }}>
-    {/* <div className="rectangle" /> */}
-  </div>
+  }}></div>
 )
 
 const Web = () => (
@@ -46,6 +44,5 @@ const Mobile = () => (
 )
 
 const App = () => isMobile ? <Mobile /> : <Web />
-// const App = () => <Fallback/>
 
 export default App

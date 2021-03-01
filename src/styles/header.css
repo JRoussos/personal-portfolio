@@ -38,6 +38,12 @@ header {
     display: flex;
 }
 
+.fade {
+    /* gsap initial values */
+    opacity: 0;
+    transform: translateY(-15px);
+}
+
 .magnet-links button {
     width: 120px;
     height: fit-content;

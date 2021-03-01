@@ -39,7 +39,7 @@ const Main = () => {
 
     setTimeout(() => {
         setBounds()
-        console.log("bounds reset");
+        // console.log("bounds reset");
     }, 500);
 
     const onTick = () => {
