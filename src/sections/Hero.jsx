@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 
 import wave_large from '../assets/img/waving-hand.png';
 import wave_small from '../assets/img/waving-hand_small.png';
-// import image from '../assets/img/image.webp';
 import image from '../assets/img/profile.webp';
 
 import '../styles/sections/hero.css';
@@ -15,7 +14,7 @@ const Hero = () => {
     });
 
     useEffect(() => {
-        gsap.timeline({force3D: true, rotate: 0.01, delay: 0.2})
+        gsap.timeline({force3D: true, rotate: 0.01, delay: 0.7})
             .to('.profile', {duration: 0.5, y: 0, opacity: 1, ease: "power4.out"})
             .to('.welcome', {duration: 1, opacity: 1, lineHeight: "1.5em", y: 0, ease: "power4.out"}, "-=0.5")
 

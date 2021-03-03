@@ -55,7 +55,7 @@ const Hamburger = () => {
 const Header = () => {
 
     useEffect(() => {
-        gsap.to('.fade', {duration: 0.4, delay: 0.2, y: 0, opacity: 1, ease: "sine.out", stagger: 0.04})
+        gsap.to('.fade', {duration: 0.4, delay: 0.7, y: 0, opacity: 1, ease: "sine.out", stagger: 0.06})
     }, [])
 
     const handleClick = e => {

@@ -5,7 +5,7 @@ import '../styles/header.css';
 import useWindowSize from '../assets/utils/useWindowSize';
 import { calculateDistance } from '../assets/utils/utils';
 
-const Hamburger = () => {
+const Hamburger = ({ initialLoad }) => {
     const [ toggle, setToggle ] = useState(false)
 
     const handleClick = () => {
@@ -36,7 +36,7 @@ const Hamburger = () => {
 
     return(
         <>
-            <div onClick={() => handleClick()} className="hamburger fade">
+            <div onClick={() => handleClick()} className={ initialLoad ? 'hamburger' : 'hamburger fade' }>
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
@@ -44,9 +44,9 @@ const Hamburger = () => {
             <div className="menu">
                 <div className="menu-inner">
                     <div className='magnet-links'>
-                        <button onClick={e => handleLink(e)} className="magnet fade">about</button>
-                        <button onClick={e => handleLink(e)} className="magnet fade">projects</button>
-                        <button onClick={e => handleLink(e)} className="magnet fade">contact</button>
+                        <button onClick={e => handleLink(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>about</button>
+                        <button onClick={e => handleLink(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>projects</button>
+                        <button onClick={e => handleLink(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>contact</button>
                     </div> 
                 </div>
             </div>
@@ -55,13 +55,16 @@ const Hamburger = () => {
 }
 
 const Header = () => {
+    const [ initialLoad, setInitialLoad ] = useState(false)
     const size = useWindowSize();
     const degrees = 10
 
     useEffect(() => {
         gsap.set('.magnet', {force3D: true, rotation: 0.01})
         
-        gsap.to('.fade', {duration: 0.4, delay: 0.2, y: 0, opacity: 1, ease: "circ.out", stagger: 0.04})
+        gsap.to('.fade', {duration: 0.4, delay: 0.7, y: 0, opacity: 1, ease: "circ.out", stagger: 0.06, onComplete: () => {
+            setInitialLoad(true)
+        }})
 
         return () => { window.removeEventListener('mousemove', handleMouseMove) }
     }, [])
@@ -113,12 +116,12 @@ const Header = () => {
     return(
         <header>
             <div className='header-inner'>
-                <div onClick={e => handleClick(e)} className='logo fade'>John Roussos</div>
-                {size.width < 850 ? <Hamburger/> : 
+                <div onClick={e => handleClick(e)} className={ initialLoad ? 'logo' : 'logo fade' }>John Roussos</div>
+                {size.width < 850 ? <Hamburger initialLoad/> : 
                     <div className='magnet-links'>
-                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className="magnet fade">about</button>
-                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className="magnet fade">projects</button>
-                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className="magnet fade">contact</button>
+                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>about</button>
+                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>projects</button>
+                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>contact</button>
                     </div> 
                 }
             </div>
