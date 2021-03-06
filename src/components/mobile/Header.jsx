@@ -6,6 +6,10 @@ import '../../styles/header.css';
 const Hamburger = () => {
     const [ toggle, setToggle ] = useState(false)
 
+    useEffect(() => {
+        gsap.to('.fade', {duration: 0.35, delay: 0.5, y: 0, opacity: 1, ease: "circ.out", stagger: 0.06} )
+    }, [])
+
     const handleClick = () => {
         if(toggle) {
             gsap.to('.line:nth-child(1)', {duration: .6, force3D: true, rotateZ: 0, marginTop: 4, y: 0})
@@ -34,17 +38,17 @@ const Hamburger = () => {
 
     return(
         <>
-            <div onClick={() => handleClick()} className="hamburger fade">
-                <div className="line inview"></div>
-                <div className="line inview"></div>
-                <div className="line inview"></div>
+            <div onClick={() => handleClick()} className="hamburger">
+                <div className="line inview fade"></div>
+                <div className="line inview fade"></div>
+                <div className="line inview fade"></div>
             </div>
             <div className="menu">
                 <div className="menu-inner">
                     <div className='magnet-links'>
-                        <button onClick={e => handleLink(e)} className="magnet fade">about</button>
-                        <button onClick={e => handleLink(e)} className="magnet fade">projects</button>
-                        <button onClick={e => handleLink(e)} className="magnet fade">contact</button>
+                        <button onClick={e => handleLink(e)} className="magnet">about</button>
+                        <button onClick={e => handleLink(e)} className="magnet">projects</button>
+                        <button onClick={e => handleLink(e)} className="magnet">contact</button>
                     </div> 
                 </div>
             </div>
@@ -55,7 +59,7 @@ const Hamburger = () => {
 const Header = () => {
 
     useEffect(() => {
-        gsap.to('.fade', {duration: 0.4, delay: 0.7, y: 0, opacity: 1, ease: "sine.out", stagger: 0.06})
+        gsap.to('.fade', {duration: 0.4, delay: 0.5, y: 0, opacity: 1, ease: "sine.out", stagger: 0.06})
     }, [])
 
     const handleClick = e => {

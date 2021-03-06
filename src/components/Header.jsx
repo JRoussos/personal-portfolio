@@ -5,8 +5,13 @@ import '../styles/header.css';
 import useWindowSize from '../assets/utils/useWindowSize';
 import { calculateDistance } from '../assets/utils/utils';
 
-const Hamburger = ({ initialLoad }) => {
+const Hamburger = () => {
     const [ toggle, setToggle ] = useState(false)
+
+    useEffect(() => {
+        gsap.to('.fade', {duration: 0.35, delay: 0.5, y: 0, opacity: 1, ease: "circ.out", stagger: 0.06} )
+        // gsap.set('.fade', {opacity: 1, y: 0})
+    }, [])
 
     const handleClick = () => {
         if(toggle) {
@@ -36,17 +41,17 @@ const Hamburger = ({ initialLoad }) => {
 
     return(
         <>
-            <div onClick={() => handleClick()} className={ initialLoad ? 'hamburger' : 'hamburger fade' }>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
+            <div onClick={() => handleClick()} className="hamburger">
+                <div className="line fade"></div>
+                <div className="line fade"></div>
+                <div className="line fade"></div>
             </div>
             <div className="menu">
                 <div className="menu-inner">
                     <div className='magnet-links'>
-                        <button onClick={e => handleLink(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>about</button>
-                        <button onClick={e => handleLink(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>projects</button>
-                        <button onClick={e => handleLink(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>contact</button>
+                        <button onClick={e => handleLink(e)} className='magnet'>about</button>
+                        <button onClick={e => handleLink(e)} className='magnet'>projects</button>
+                        <button onClick={e => handleLink(e)} className='magnet'>contact</button>
                     </div> 
                 </div>
             </div>
@@ -54,17 +59,13 @@ const Hamburger = ({ initialLoad }) => {
     )
 }
 
-const Header = () => {
-    const [ initialLoad, setInitialLoad ] = useState(false)
-    const size = useWindowSize();
-    const degrees = 10
+const Links = () => {
+    const degrees = 10;
 
     useEffect(() => {
         gsap.set('.magnet', {force3D: true, rotation: 0.01})
         
-        gsap.to('.fade', {duration: 0.4, delay: 0.7, y: 0, opacity: 1, ease: "circ.out", stagger: 0.06, onComplete: () => {
-            setInitialLoad(true)
-        }})
+        gsap.to('.fade', {duration: 0.4, delay: 0.5, y: 0, opacity: 1, ease: "circ.out", stagger: 0.06} )
 
         return () => { window.removeEventListener('mousemove', handleMouseMove) }
     }, [])
@@ -108,22 +109,28 @@ const Header = () => {
         })
     }
 
-    const handleClick = e => {
-        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
-        window.scrollTo(0, section.offsetTop)   
-    }
+    return(
+        <div className='magnet-links'>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade'>about</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade'>projects</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade'>contact</button>
+        </div> 
+    )
+}
+
+const handleClick = e => {
+    const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
+    window.scrollTo(0, section.offsetTop)   
+}
+
+const Header = () => {
+    const size = useWindowSize();
 
     return(
         <header>
             <div className='header-inner'>
-                <div onClick={e => handleClick(e)} className={ initialLoad ? 'logo' : 'logo fade' }>John Roussos</div>
-                {size.width < 850 ? <Hamburger initialLoad/> : 
-                    <div className='magnet-links'>
-                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>about</button>
-                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>projects</button>
-                        <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className={ initialLoad ? 'magnet' : 'magnet fade' }>contact</button>
-                    </div> 
-                }
+                <div onClick={e => handleClick(e)} className='logo fade'>John Roussos</div>
+                {size.width < 850 ? <Hamburger/> : <Links/> }
             </div>
         </header>
     )

@@ -8,10 +8,6 @@
     
     z-index: 100; 
     animation: transition_animation 1s 4s ease-out;
-    
-    --dot: url(../assets/img/dot.svg);
-    --drag: url(../assets/img/drag.svg);
-    --circle: url(../assets/img/circle.svg);
 }
 
 .dot {

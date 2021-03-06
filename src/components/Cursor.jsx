@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import '../styles/cursor.css';
 
+import circle from '../assets/img/circle.svg';
+
 let cursorPos = { 
     x: 0, y: 0
 }
@@ -47,7 +49,9 @@ const Cursor = () => {
         setY(cursorPos.y);
     });
 
-    return <div id="cursor" className="cursor dot"/>
+    return <div id="cursor" className="cursor dot">
+        <img src={circle} alt="circle"/>
+    </div>
     
 }
 
