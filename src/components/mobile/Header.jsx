@@ -13,15 +13,13 @@ const Hamburger = () => {
     const handleClick = () => {
         if(toggle) {
             gsap.to('.line:nth-child(1)', {duration: .6, force3D: true, rotateZ: 0, marginTop: 4, y: 0})
-            gsap.to('.line:nth-child(2)', {duration: .6, force3D: true, rotateZ: 0, opacity: 1})
-            gsap.to('.line:nth-child(3)', {duration: .6, force3D: true, rotateZ: 0, marginTop: 4, y: 0})
+            gsap.to('.line:nth-child(2)', {duration: .6, force3D: true, rotateZ: 0, marginTop: 4, y: 0})
 
             gsap.to('.menu-inner', {duration: .8, top: "-60vh", ease: "power3.out"})
             gsap.to('.menu', {duration: .6, opacity: 0, ease: "power3.out"})
         }else{
-            gsap.to('.line:nth-child(1)', {duration: .6, force3D: true, rotateZ: 315, marginTop: 0, y: 4})
-            gsap.to('.line:nth-child(2)', {duration: .6, force3D: true, rotateZ: 225, opacity: 0})
-            gsap.to('.line:nth-child(3)', {duration: .6, force3D: true, rotateZ: 225, marginTop: 0, y: -4})
+            gsap.to('.line:nth-child(1)', {duration: .6, force3D: true, rotateZ: 320, marginTop: 0, y: 1})
+            gsap.to('.line:nth-child(2)', {duration: .6, force3D: true, rotateZ: 220, marginTop: 0, y: -1})
 
             gsap.to('.menu-inner', {duration: .8, top: 0, ease: "power3.out"})
             gsap.to('.menu', {duration: .6, opacity: 1, ease: "power3.out"})
@@ -39,7 +37,6 @@ const Hamburger = () => {
     return(
         <>
             <div onClick={() => handleClick()} className="hamburger">
-                <div className="line inview fade"></div>
                 <div className="line inview fade"></div>
                 <div className="line inview fade"></div>
             </div>

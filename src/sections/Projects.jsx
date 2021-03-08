@@ -35,20 +35,6 @@ const Projects = () => {
         currentScrollPosition = clamp(currentScrollPosition, 0, boundMax) // prevent dragging out of bound
     }
 
-    const handleMouseLeave = () => {
-        gsap.timeline()
-            .to('#cursor', {duration: .2, scale: 0})
-            .set('#cursor', {className: "cursor dot"})
-            .to('#cursor', {duration: .2, scale: 1})
-    }
-
-    const handleMouseEnter = () => {
-        gsap.timeline()
-            .to('#cursor', {duration: .2, scale: 0})
-            .set('#cursor', {className: "cursor circle"})
-            .to('#cursor', {duration: .2, scale: 1})
-    }
-
     const handleMouseDown = e => {
         e.target.setPointerCapture(e.pointerId)
         document.querySelector('.projects').style.cursor = "grabbing"        
@@ -109,12 +95,12 @@ const Projects = () => {
 
     return(
         <section id="projects" className="section projects">
-            <div className="scroller" 
+            <div className="scroller react-to-mouse" 
                 onMouseMove={e => handleMouseMove(e)} 
                 onPointerDown={e => handleMouseDown(e)} 
-                onPointerUp={e => handleMouseUp(e)} 
-                onMouseLeave={() => handleMouseLeave()}
-                onMouseEnter={() => handleMouseEnter()}> {/* the scroll container */}
+                // onMouseEnter={() => handleMouseEnter()}
+                // onMouseLeave={() => handleMouseLeave()}
+                onPointerUp={e => handleMouseUp(e)}> {/* the scroll container */}
                 <div ref={scrollable} id="scrollable_projects" className="scrollable"> {/* the scrollable content */}
                     
                     <div className="bound">

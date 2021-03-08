@@ -61,7 +61,7 @@ const Contact = () => {
                 </div>
             </div>
             <div className="copyright">
-                <p>© {new Date().getFullYear()}, <a target="_blank" tabIndex="-1" rel="noopener noreferrer" href="https://github.com/jroussos">J.R.</a></p>
+                <p>© {new Date().getFullYear()}, <a className="react-to-mouse" target="_blank" tabIndex="-1" rel="noopener noreferrer" href="https://github.com/jroussos">J.R.</a></p>
             </div>
         </section>
     )

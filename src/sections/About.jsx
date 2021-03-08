@@ -51,7 +51,7 @@ const Skills = ({mainBounds}) => {
         <div ref={skillsPanel} className="skills">
             {store.contents.about.skills.map(( item, index ) => (
                 <div id={`skill_wrapper_${index}`} key={ index }>
-                    <h4 onClick={e => toggleCollapse(index, e)}> {item.title} </h4>
+                    <h4 className="react-to-mouse" onClick={e => toggleCollapse(index, e)}> {item.title} </h4>
                     <div className="list" style={{ overflow: "hidden" }}>
                         <ul> {item.content.map(( content, index ) => <li key={index}>{ content }</li>)} </ul>
                     </div>

@@ -12,11 +12,12 @@
 
 .dot {
     position: fixed;
-    top: -4px;
-    left: -4px;
+    
+    top: -109px;
+    left: -109px;
 
     animation: transition_animation 1s ease-out;
-    content: var(--dot);
+    /* content: var(--dot); */
 }
 
 .drag {

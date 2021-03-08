@@ -15,8 +15,3 @@ html, body, #root {
 body::-webkit-scrollbar {
   display: none;
 }
-
-#root {
-  --dot: url(assets/img/dot.svg);
-  --circle: url(assets/img/circle.svg);
-}
