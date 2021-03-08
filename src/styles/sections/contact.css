@@ -5,13 +5,18 @@
     color: #fff;
     display: flex;
     height: 75vh;
+    height: 65vh;
 
-    position: relative;
+    /* position: relative; */
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
 }
 
 .contact .mail_wrapper {
     position: absolute;
     top: 30%;
+    top: 20%;
     left: 5%;
 }
 

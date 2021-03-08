@@ -30,7 +30,14 @@ const Main = () => {
     }
 
     const setBounds = () => {
-        document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
+        let bodyHeight = 0
+        let section_list = [ ...document.querySelectorAll('.section')]
+        section_list.forEach(element => {
+            bodyHeight += element.clientHeight
+        });
+
+        document.body.style.height = `${bodyHeight}px`
+        // document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
     }
 
     window.addEventListener('scroll', handleOnScroll, { passive: true })
@@ -47,7 +54,6 @@ const Main = () => {
         const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
         lastScrollPosition += Math.round(step * 100) / 100
 
-        // console.log(step, lastScrollPosition);
 
         const skew = (currentScrollPosition - lastScrollPosition) * skewVel
         const skewRounded = Math.round(skew * 100) / 100
@@ -55,9 +61,6 @@ const Main = () => {
         // change querySelector to getElementById for performance reasons
         document.getElementById('scrollable').style.transform = `translate3d(0, -${lastScrollPosition}px, 0) skewY(${skewRounded}deg)`
         document.getElementById('parallax').style.transform = `translate3d(0, ${lastScrollPosition * 0.2}px, 0)`
-        // document.querySelectorAll('.paragraph').forEach(paragraph => {
-        //     paragraph.style.transform = `translate3d(0, -${step * 1.35}px, 0)`
-        // })
 
         rAf.current = requestAnimationFrame(onTick)
     }
@@ -68,8 +71,8 @@ const Main = () => {
                 <Hero/>
                 <About mainBounds={setBounds}/>
                 <Projects/>
-                <Contact/>
             </div>
+            <Contact/>
         </main>
     )
 }

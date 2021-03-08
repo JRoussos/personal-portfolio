@@ -32,7 +32,14 @@ const Main = () => {
     }
 
     const setBounds = () => {
-        document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
+        let bodyHeight = 0
+        let section_list = [ ...document.querySelectorAll('.section')]
+        section_list.forEach(element => {
+            bodyHeight += element.clientHeight
+        });
+
+        document.body.style.height = `${bodyHeight}px`
+        // document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
     }
 
     window.addEventListener('scroll', handleOnScroll, { passive: true })
@@ -63,8 +70,8 @@ const Main = () => {
                 <Hero/>
                 <About mainBounds={setBounds}/>
                 <Projects/>
-                <Contact/>
             </div>
+            <Contact/>
         </main>
     )
 }

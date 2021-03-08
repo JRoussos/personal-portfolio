@@ -33,11 +33,11 @@ const Contact = () => {
     }
 
     return(
-        <section className="section contact">
+        <section id="contact" className="section contact">
             <div className="mail_wrapper">
                 <div>
                     <p>Hey don't be a stranger, reach out
-                        <img src={victory_small} srcSet={`${victory_small}, ${victory_large} 2x`} alt="victory sign"/>
+                        <img src={victory_large} srcSet={`${victory_small} 400w, ${victory_large}`} alt="victory sign"/>
                     </p>
                     {/* <p>Let's talk about your next project</p> */}
                     {/* <p>Have something to talk to me about?</p> */}
