@@ -98,8 +98,6 @@ const Projects = () => {
             <div className="scroller react-to-mouse" 
                 onMouseMove={e => handleMouseMove(e)} 
                 onPointerDown={e => handleMouseDown(e)} 
-                // onMouseEnter={() => handleMouseEnter()}
-                // onMouseLeave={() => handleMouseLeave()}
                 onPointerUp={e => handleMouseUp(e)}> {/* the scroll container */}
                 <div ref={scrollable} id="scrollable_projects" className="scrollable"> {/* the scrollable content */}
                     

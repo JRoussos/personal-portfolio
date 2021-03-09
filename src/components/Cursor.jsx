@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 
 import '../styles/cursor.css';
 
-let velocity = 0.1
+let velocity = 0.08
 let mouse = {
     x: { previous: 0, current: 0 },
     y: { previous: 0, current: 0 }

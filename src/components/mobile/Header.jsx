@@ -29,8 +29,10 @@ const Hamburger = () => {
     }
 
     const handleLink = e => {
-        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
-        window.scrollTo(0, section.offsetTop)
+        if(e.target.id === 'contact')
+            window.scrollTo(0, document.querySelector('.scrollable').getBoundingClientRect().height)   
+        else
+            window.scrollTo(0, document.querySelector(`.${e.target.id}`).offsetTop) 
         handleClick()
     }
 
@@ -43,9 +45,9 @@ const Hamburger = () => {
             <div className="menu">
                 <div className="menu-inner">
                     <div className='magnet-links'>
-                        <button onClick={e => handleLink(e)} className="magnet">about</button>
-                        <button onClick={e => handleLink(e)} className="magnet">projects</button>
-                        <button onClick={e => handleLink(e)} className="magnet">contact</button>
+                        <button onClick={e => handleLink(e)} className="magnet" id='about'>about</button>
+                        <button onClick={e => handleLink(e)} className="magnet" id='projects'>projects</button>
+                        <button onClick={e => handleLink(e)} className="magnet" id='contact'>contact</button>
                     </div> 
                 </div>
             </div>
@@ -60,14 +62,16 @@ const Header = () => {
     }, [])
 
     const handleClick = e => {
-        const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
-        window.scrollTo(0, section.offsetTop)   
+        if(e.target.id === 'contact')
+            window.scrollTo(0, document.querySelector('.scrollable').getBoundingClientRect().height)   
+        else
+            window.scrollTo(0, document.querySelector(`.${e.target.id}`).offsetTop) 
     }
 
     return(
         <header>
             <div className='header-inner'>
-                <div onClick={e => handleClick(e)} className='logo fade inview'>John Roussos</div>
+                <div id='hero' onClick={e => handleClick(e)} className='logo fade inview'>John Roussos</div>
                 <Hamburger/>
             </div>
         </header>

@@ -113,16 +113,18 @@ const Links = () => {
 
     return(
         <div className='magnet-links'>
-            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade'>about</button>
-            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade'>projects</button>
-            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade'>contact</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade' id='about'>about</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade' id='projects'>projects</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade' id='contact'>contact</button>
         </div> 
     )
 }
 
 const handleClick = e => {
-    const section = document.querySelector(`.${e.target.innerHTML}`) || document.querySelector('.hero') 
-    window.scrollTo(0, section.offsetTop)   
+    if(e.target.id === 'contact')
+        window.scrollTo(0, document.querySelector('.scrollable').getBoundingClientRect().height)   
+    else
+        window.scrollTo(0, document.querySelector(`.${e.target.id}`).offsetTop)   
 }
 
 const Header = () => {
@@ -131,7 +133,7 @@ const Header = () => {
     return(
         <header>
             <div className='header-inner'>
-                <div onClick={e => handleClick(e)} className='logo fade react-to-mouse'>John Roussos</div>
+                <div id='hero' onClick={e => handleClick(e)} className='logo fade react-to-mouse'>John Roussos</div>
                 {size.width < 850 ? <Hamburger/> : <Links/> }
             </div>
         </header>

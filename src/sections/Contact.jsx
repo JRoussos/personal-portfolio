@@ -33,35 +33,37 @@ const Contact = () => {
     }
 
     return(
-        <section id="contact" className="section contact">
-            <div className="mail_wrapper">
-                <div>
-                    <p>Hey don't be a stranger, reach out
-                        <img src={victory_large} srcSet={`${victory_small} 400w, ${victory_large}`} alt="victory sign"/>
-                    </p>
-                    {/* <p>Let's talk about your next project</p> */}
-                    {/* <p>Have something to talk to me about?</p> */}
-                    <div className="mail_container" onMouseEnter={() => handleOnEnter()} onMouseLeave={() => handleOnLeave()}>
-                        <a id="send_mail" tabIndex="-1" style={{transform: "translate(0, 0)"}} href="mailto:jroussosdev@gmail.com?subject=Hey John :)">Send me an email</a>
+        <section className="section contact">
+            <div id="contact_wrapper">
+                <div className="mail_wrapper">
+                    <div>
+                        <p>Hey don't be a stranger, reach out
+                            <img src={victory_large} srcSet={`${victory_small} 400w, ${victory_large}`} alt="victory sign"/>
+                        </p>
+                        {/* <p>Let's talk about your next project</p> */}
+                        {/* <p>Have something to talk to me about?</p> */}
+                        <div className="mail_container react-to-mouse" onMouseEnter={() => handleOnEnter()} onMouseLeave={() => handleOnLeave()}>
+                            <a id="send_mail" tabIndex="-1" style={{transform: "translate(0, 0)"}} href="mailto:jroussosdev@gmail.com?subject=Hey John :)">Send me an email</a>
+                        </div>
+                        <hr/>
                     </div>
-                    <hr/>
-                </div>
 
-                <div className="icon_container">
-                    <p>follow me on</p>
-                    <div style={{display: "flex"}}>
-                        {store.contents.contact.map((social, index) => (
-                            <div className="socials" key={index}>
-                                <a target="_blank" tabIndex="-1" rel="noopener noreferrer" href={social.link}>
-                                    <img onMouseEnter={() => handleMouseEnterSocial(index)} onMouseLeave={() => handleMouseLeaveSocial(index)} src={social.icon} alt={social.link}/>
-                                </a>
-                            </div>
-                        ))}
+                    <div className="icon_container">
+                        <p>follow me on</p>
+                        <div style={{display: "flex"}}>
+                            {store.contents.contact.map((social, index) => (
+                                <div className="socials" key={index}>
+                                    <a target="_blank" tabIndex="-1" rel="noopener noreferrer" href={social.link}>
+                                        <img onMouseEnter={() => handleMouseEnterSocial(index)} onMouseLeave={() => handleMouseLeaveSocial(index)} src={social.icon} alt={social.link}/>
+                                    </a>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="copyright">
-                <p>© {new Date().getFullYear()}, <a className="react-to-mouse" target="_blank" tabIndex="-1" rel="noopener noreferrer" href="https://github.com/jroussos">J.R.</a></p>
+                <div className="copyright">
+                    <p>© {new Date().getFullYear()}, <a className="react-to-mouse" target="_blank" tabIndex="-1" rel="noopener noreferrer" href="https://github.com/jroussos">J.R.</a></p>
+                </div>
             </div>
         </section>
     )

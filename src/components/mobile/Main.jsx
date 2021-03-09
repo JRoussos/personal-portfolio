@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { range } from '../../assets/utils/utils';
 
 import Hero from '../../sections/Hero';
 import About from '../../sections/About';
@@ -57,9 +58,15 @@ const Main = () => {
         const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
         lastScrollPosition += Math.round(step * 100) / 100
 
+        const scrollableHeight = document.querySelector('#scrollable').clientHeight
+        const bodyHeight = document.body.clientHeight
+        const contactHeight = document.querySelector('.contact').getBoundingClientRect().bottom // section height and its margin
+
         // change querySelector to getElementById for performance reasons
         document.getElementById('scrollable').style.transform = `translate3d(0, -${lastScrollPosition}px, 0)`
         document.getElementById('parallax').style.transform = `translate3d(0, ${lastScrollPosition* 0.2}px, 0)`
+
+        document.getElementById('contact_wrapper').style.transform = `translate3d(0, ${ range( scrollableHeight, bodyHeight, 50, 0, lastScrollPosition + contactHeight) }%, 0`
 
         requestRef.current = requestAnimationFrame(onTick)
     }
