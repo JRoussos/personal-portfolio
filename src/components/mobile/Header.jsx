@@ -62,10 +62,7 @@ const Header = () => {
     }, [])
 
     const handleClick = e => {
-        if(e.target.id === 'contact')
-            window.scrollTo(0, document.querySelector('.scrollable').getBoundingClientRect().height)   
-        else
-            window.scrollTo(0, document.querySelector(`.${e.target.id}`).offsetTop) 
+        window.scrollTo(0, document.querySelector(`.${e.target.id}`).offsetTop) 
     }
 
     return(

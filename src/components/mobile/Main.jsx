@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import { range } from '../../assets/utils/utils';
 
 import Hero from '../../sections/Hero';
 import About from '../../sections/About';
@@ -33,14 +32,7 @@ const Main = () => {
     }
 
     const setBounds = () => {
-        let bodyHeight = 0
-        let section_list = [ ...document.querySelectorAll('.section')]
-        section_list.forEach(element => {
-            bodyHeight += element.clientHeight
-        });
-
-        document.body.style.height = `${bodyHeight}px`
-        // document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
+        document.body.style.height = `${document.getElementById('scrollable').getBoundingClientRect().height}px`
     }
 
     window.addEventListener('scroll', handleOnScroll, { passive: true })
@@ -58,15 +50,15 @@ const Main = () => {
         const step = ( currentScrollPosition - lastScrollPosition ) * scrollVel
         lastScrollPosition += Math.round(step * 100) / 100
 
-        const scrollableHeight = document.querySelector('#scrollable').clientHeight
-        const bodyHeight = document.body.clientHeight
-        const contactHeight = document.querySelector('.contact').getBoundingClientRect().bottom // section height and its margin
+        // const scrollableHeight = document.querySelector('#scrollable').clientHeight
+        // const bodyHeight = document.body.clientHeight
+        // const contactHeight = document.querySelector('.contact').getBoundingClientRect().bottom // section height and its margin
 
         // change querySelector to getElementById for performance reasons
         document.getElementById('scrollable').style.transform = `translate3d(0, -${lastScrollPosition}px, 0)`
         document.getElementById('parallax').style.transform = `translate3d(0, ${lastScrollPosition* 0.2}px, 0)`
 
-        document.getElementById('contact_wrapper').style.transform = `translate3d(0, ${ range( scrollableHeight, bodyHeight, 50, 0, lastScrollPosition + contactHeight) }%, 0`
+        // document.getElementById('contact_wrapper').style.transform = `translate3d(0, ${ range( scrollableHeight, bodyHeight, 50, 0, lastScrollPosition + contactHeight) }%, 0`
 
         requestRef.current = requestAnimationFrame(onTick)
     }
@@ -77,8 +69,8 @@ const Main = () => {
                 <Hero/>
                 <About mainBounds={setBounds}/>
                 <Projects/>
+                <Contact/>
             </div>
-            <Contact/>
         </main>
     )
 }
