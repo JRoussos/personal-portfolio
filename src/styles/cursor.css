@@ -12,41 +12,10 @@
 
 .dot {
     position: fixed;
-    
     top: -109px;
     left: -109px;
 
     animation: transition_animation 1s ease-out;
-    /* content: var(--dot); */
-}
-
-.drag {
-    position: fixed;
-    top: -5px;
-    left: -5px;
-
-    content: var(--drag);
-}
-
-.circle {
-    position: fixed;
-    top: -21px;
-    left: -29px;
-    
-    animation: transition_animation 1s ease-out;
-    content: var(--circle);
-}
-
-.cursor-inner {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    border-radius: 50%;
-    border: 1px solid white;
-    height: 50px;
-    width: 50px;
 }
 
 @keyframes transition_animation {

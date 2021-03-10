@@ -1,22 +1,39 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { calculateDistance } from '../assets/utils/utils';
 
 import '../styles/cursor.css';
 
-let velocity = 0.08
+let velocity = 0.1
 let mouse = {
     x: { previous: 0, current: 0 },
     y: { previous: 0, current: 0 }
 }
 
+
 const Cursor = () => {
     const tl = useRef( gsap.timeline() ) 
-
+    
     const mousePos = e => {
         mouse.x.current = e.clientX
         mouse.y.current = e.clientY
-    }
 
+        document.querySelectorAll('.magnet').forEach(element => {
+            const boundingRect = element.getBoundingClientRect()
+            const distance = calculateDistance(element, e.clientX, e.clientY)
+            
+            const elementCenter = {
+                x: boundingRect.left + element.clientWidth / 2,
+                y: boundingRect.top + element.clientHeight / 2
+            }
+
+            if( distance < 50 ){
+                mouse.x.current = elementCenter.x
+                mouse.y.current = elementCenter.y
+            }
+        });
+    }
+    
     useEffect(() => {
         window.addEventListener("mousemove", e => mousePos(e))
 
@@ -28,12 +45,10 @@ const Cursor = () => {
 
         const nodeList = [ ...document.querySelectorAll('.react-to-mouse')]
         nodeList.forEach(element => {
-            element.addEventListener('mouseenter', () => gsap.to('circle', {duration: .4, r: 30, ease: 'power3.inOut'}) );
+            element.addEventListener('mouseenter', () => gsap.to('circle', {duration: .4, r: 40, ease: 'power3.inOut'}) );
             element.addEventListener('mouseleave', () => gsap.to('circle', {duration: .4, r: 6, ease: 'power3.inOut'}) );
         });
-
-        return () => { window.removeEventListener("mousemove", e => mousePos(e)) }
-
+        
     }, [])
 
     gsap.ticker.add(() => {

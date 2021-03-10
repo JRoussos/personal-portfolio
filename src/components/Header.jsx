@@ -87,7 +87,7 @@ const Links = () => {
         const rotationX = -1.1 * (center.x - e.clientX - degrees)
         const rotationY = -1.0 * (center.y - e.clientY - degrees)
 
-        const percentage = 1 - (distance / 150)
+        const percentage = 1 - (distance / 100)
 
         gsap.to(e.target, {
             duration: .2, 
@@ -113,9 +113,9 @@ const Links = () => {
 
     return(
         <div className='magnet-links'>
-            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade' id='about'>about</button>
-            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade' id='projects'>projects</button>
-            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade' id='contact'>contact</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade react-to-mouse' id='about'>about</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade react-to-mouse' id='projects'>projects</button>
+            <button onMouseMove={e => handleMouseMove(e)} onMouseLeave={e => handleMouseLeave(e)} onClick={e => handleClick(e)} className='magnet fade react-to-mouse' id='contact'>contact</button>
         </div> 
     )
 }
